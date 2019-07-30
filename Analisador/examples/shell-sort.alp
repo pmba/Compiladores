@@ -1,0 +1,64 @@
+function int[] shellSort(int nums[], int size) do
+    int i;
+    int j;
+    int value;
+    int gap;
+    
+    gap = 1;
+    while gap < size do
+        gap = 3*gap+1;
+    end
+    
+    while gap > 0 do
+    
+        from i = gap to size do
+        
+            value = nums[i];
+            j = i;
+            
+            while j > gap-1 and value <= nums[j-gap] do
+            
+                nums[j] = nums[j-gap];
+                j = j-gap;
+                
+            end
+            
+            nums[j] = value;
+            
+        end
+        
+        gap = gap/3;
+        
+    end
+    
+    return nums;
+end
+
+function int main() do
+    
+    int size;
+    int i;
+    
+    print((*\color{myred}"Insira a quantidade de números"*));
+    read(size);
+    
+    int numbers[size];
+    
+    print((*\color{myred}"Insira os numeros"*));
+    
+    from i = 0 to size do
+        read(numbers[i]);
+    end
+    
+    from i = 0 to size do
+        print(numbers[i]);
+    end
+    
+    numbers = shellSort(numbers, size);
+    
+    from i = 0 to size do
+        print(numbers[i]);
+    end
+
+    return 0;
+end

@@ -1,0 +1,37 @@
+function int fibonacci(int target) do
+
+    int a;
+    int b;
+    int next;
+
+    a = 1;
+    b = 1;
+    
+    while next <= target do
+
+        next = a + b;
+        a = b;
+        
+        print(a ++ ", ");
+        
+        b = next;
+
+    end
+
+    print(a);
+    
+    return 1;
+end
+
+function int main() do
+
+    int number;
+    int result;
+
+    read(number);
+
+    result = fibonacci(number);
+
+    return 0;
+
+end
