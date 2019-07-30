@@ -13,13 +13,9 @@ typedef enum boolean {
     False, True
 } Boolean;
 
-typedef enum non_term {
+/* generic category used to join non-terminals and terminals category at stack */
 
-    // start the non terminal count from the categories count end
-    EmptyStack = 3, Token1, Token2, Token3
-} NonTerminal;
-
-typedef enum generic_cat { Generic = -1 } GenericCategory; 
+typedef enum generic_cat { EmptyStack = -1 } GenericCategory; 
 
 typedef struct node {
 
