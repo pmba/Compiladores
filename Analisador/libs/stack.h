@@ -8,11 +8,6 @@ Ciencia da Computacao
 
 *****************************/
 
-typedef enum boolean {
-
-    False, True
-} Boolean;
-
 /* generic category used to join non-terminals and terminals category at stack */
 
 typedef enum generic_cat { EmptyStack = -1 } GenericCategory; 

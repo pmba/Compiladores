@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include "./libs/auxiliar.h"
 #include "./libs/stack.h"
+#include "./libs/file.h"
 #include "./libs/syntactic.h"
-#include "./libs/lexic.h"
+#include "./libs/lexical.h"
 
 /****************************
 
@@ -14,17 +17,33 @@ Ciencia da Computacao
 
 *****************************/
 
-#define DEBUG if(0)
+int main(int argc, char const *argv[]) {
 
-int main(int argc, char const *argv[])
-{
-    Stack* stack = createStack();
+    if (argc <= 1) {
 
-    printf("%d\n", catFunction);
+        printf("[Error] File path expected as first argument.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    Boolean file_opened = openFile(argv[1]);
+
+    if (!file_opened) exit(EXIT_FAILURE); 
+
+    readLine();
+    readLine();
+    readLine();
+    readLine();
+    readLine();
+
+    // Stack* stack = createStack();
+
+    // printf("%d\n", catFunction);
 
 
-    clearStack(stack);
-    free(stack);
+    // clearStack(stack);
+    // free(stack);
+
+    closeFile();
 
     return 0;
 }
