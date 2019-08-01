@@ -1,7 +1,3 @@
-#include "./auxiliar.h"
-
-#define _DEBUG if(True)
-
 typedef struct list {
     Token* head;
 
@@ -36,9 +32,12 @@ void pushList(List* list, Token* newToken) {
 Token* nextToken(List* list) {
     if (list->head == NULL) return NULL;
 
-    if (list->head->next == NULL) 
-        return list->head;
-
+    if (list->head->next == NULL){
+        Token* aux = list->head;
+        list->head = NULL;
+        return aux;
+    } 
+     
     else {
         Token* aux = list->head;
         list->head = list->head->next;
@@ -48,16 +47,21 @@ Token* nextToken(List* list) {
 }
 
 void printList (List* list) {
-    Token* aux = list->head;
 
     if(list->head != NULL) {
-        printf("%s\n", list->head->lexeme);
-    }
 
-    while(list->head->next != NULL) {
-        list->head = list->head->next;
-        printf("%s\n", list->head->lexeme);
-    }
+        Token* aux = list->head;
+        
+        printToken(list->head);
+        
+        while(list->head->next != NULL) {
+            list->head = list->head->next;
+            printToken(list->head);
+        }
 
-    list->head = aux;
+        list->head = aux;
+
+    } else {
+        printf("Empty list\n");
+    }
 }

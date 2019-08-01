@@ -150,17 +150,19 @@ typedef struct token {
     int row, col;
 
     struct token* next;
+    
 } Token;
 
 Token* newToken(char* lex, Category cat, int row, int col) {
 
-    Token* new_token = malloc(sizeof(Token*));
+    Token* new_token = malloc(sizeof(Token));
 
     new_token->lexeme = lex;
     new_token->category = cat;
     new_token->row = row;
     new_token->col = col;
-
+    new_token->next = NULL;
+    
     return new_token;
 }
 

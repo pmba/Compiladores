@@ -7,7 +7,6 @@ Universidade Federal de Alagoas
 Ciencia da Computacao
 
 *****************************/
-
 #define RegularExpressionsQuant 48
 
 int _column;
@@ -197,7 +196,7 @@ Token* recognizeSpecialChar(char ch, char next_ch, int col) {
     }
 }
 
-Boolean analyseLine(char* line) {
+Boolean analyseLine(char* line, struct list* list) {
     
     int buffer_index = 0;
 
@@ -219,6 +218,7 @@ Boolean analyseLine(char* line) {
 
                 _DEBUG printf("\t[Info] Lexeme found: \"%s\"\n", buffer);
                 Token* recognized_word = recognizeWord(buffer, _column);
+                pushList(list, recognized_word);
                 printToken(recognized_word);
             }
 
@@ -249,7 +249,7 @@ Boolean analyseLine(char* line) {
 
                     Token* recognized_cte = newStrChToken(_cte_lex, current_line, _column);
                     printToken(recognized_cte);
-
+                    pushList(list, recognized_cte);
                     _column += _cte_length + 1;
                     continue;
                 }
@@ -260,10 +260,9 @@ Boolean analyseLine(char* line) {
             if (recognized_char != NULL) {
 
                 _DEBUG printf("\t[Info] Lexeme found: \"%s\", Category \"%s\"\n", recognized_char->lexeme, categoryToString[recognized_char->category]);
+                pushList(list, recognized_char);
                 printToken(recognized_char);
             }
-            
-            free(recognized_char);
         } 
     }
 }

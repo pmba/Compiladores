@@ -4,10 +4,12 @@
 #include <regex.h>
 #include <ctype.h>
 #include "./libs/auxiliar.h"
+#include "./libs/list.h"
 #include "./libs/stack.h"
 #include "./libs/file.h"
 #include "./libs/syntactic.h"
 #include "./libs/lexical.h"
+
 
 /****************************
 
@@ -36,12 +38,20 @@ int main(int argc, char const *argv[]) {
 
     char* line_read = readLine();
     
-    while (line_read != NULL) {
+    struct list* myList = newList();
 
-        analyseLine(line_read);
+    while (line_read != NULL) {
+        analyseLine(line_read, myList);
         line_read = readLine();
     }
-
+    
+    printf("\n\n");
+    
+    Token* tk;
+    while((tk = nextToken(myList)) != NULL) {
+        printToken(tk);
+    }
+  
     closeFile();
 
     return 0;
