@@ -260,7 +260,7 @@ List* analyseLine(char* line, List* list) {
                 if(recognized_word->category != _unrecognized) {
                     list = pushList(list, recognized_word);
                 }
-                //printToken(recognized_word);
+            
             }
 
             if (line[_column] == '"' || line[_column] == '\'') {
@@ -286,7 +286,7 @@ List* analyseLine(char* line, List* list) {
 
                     _cte_lex[j-_column] = '\0';
                     Token* recognized_cte = newStrChToken(_cte_lex, current_line, _column);
-                    //printToken(recognized_cte);
+                
                     list = pushList(list, recognized_cte);
                     _column += _cte_length;
                     continue;
@@ -299,7 +299,7 @@ List* analyseLine(char* line, List* list) {
 
                 _DEBUG printf("\t[Info] Lexeme found: \"%s\", Category \"%s\"\n", recognized_char->lexeme, categoryToString[recognized_char->category]);
                 list = pushList(list, recognized_char);
-                //printToken(recognized_char);
+            
             }
         } 
     }
