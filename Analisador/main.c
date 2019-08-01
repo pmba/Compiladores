@@ -30,6 +30,7 @@ int main(int argc, char const *argv[]) {
     Boolean file_opened = openFile(argv[1]);
 
     if (!file_opened) exit(EXIT_FAILURE); 
+    if (!initializeLexicalAnalyzer()) exit(EXIT_FAILURE);
 
     char* line_read = readLine();
     

@@ -12,7 +12,6 @@ Ciencia da Computacao
 
 #define NonTerminalQuant 41
 #define TerminalsQuant 49
-#define RegularExpressionsQuant 60
 
 typedef enum boolean {
 
@@ -82,7 +81,8 @@ typedef enum category {
     catCteFloat, 
     catCteStr, 
     catCteChar, 
-    catEOF
+    catEOF,
+    _unrecognized
 
 } Category;
 
@@ -103,7 +103,6 @@ Token* newToken(char* lex, Category cat, int row, int col) {
     new_token->category = cat;
     new_token->row = row;
     new_token->col = col;
-    new_token->next = NULL;
 
     return new_token;
 }

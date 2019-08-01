@@ -8,14 +8,20 @@ Ciencia da Computacao
 
 *****************************/
 
-const char regular_exp[][90] = {
+#define RegularExpressionsQuant 48
+
+int _column;
+
+regex_t regular_exp[RegularExpressionsQuant] = {0};
+
+const char regular_exp_pattern[][90] = {
 
     "^function$", "^do$", "^end$", 
     "^main$", "^int$", "^float$", "^string$",
-    "^bool$", "^char$", "^void$", "^($", "^)$",
+    "^bool$", "^char$", "^void$", "^\\($", "^)$",
     "^,$", "^if$", "^while$", "^from$", "^to$", 
-    "^else$", "^doing$", "^;$", "^[$", "^]$",
-    "^print$", "^read$", "^return$", "^++$", 
+    "^else$", "^doing$", "^;$", "^\\[$", "^]$",
+    "^print$", "^read$", "^return$", "^\\+\\+$", 
     "^or$", "^and$", "^!$", "^=$", "^==$", 
     "^!=$", "^(true|false)$", "^>$", "^>=$",
     "^<$", "^<=$", "^\\+$", "^\\-$", "^\\*$",
@@ -27,6 +33,22 @@ const char regular_exp[][90] = {
     "^\'([ a-zA-Z0-9.,:;\\?!\\+\\-\\*/\\_@&%\\$<>=(){}[]|])\'$"
 
 };
+
+Boolean initializeLexicalAnalyzer() {
+
+    int i;
+    for (i = 0; i < RegularExpressionsQuant; ++i) {
+
+        _DEBUG printf("  [Regex] Compiling regex #%d\n", i);
+        
+        if (regcomp(&regular_exp[i], regular_exp_pattern[i], REG_EXTENDED)) {
+            printf("[Error] Can't compile regex [%d]: \"%s\"\n", i, regular_exp_pattern[i]);
+            return False;
+        }
+    }
+
+    return True;
+} 
 
 Boolean isAnalisysSpecialChar(char ch) {
 
@@ -45,6 +67,10 @@ Boolean isAnalisysSpecialChar(char ch) {
         case '/':
         case '%':
         case ';':
+        case '=':
+        case '!':
+        case '>':
+        case '<':
             return True;
             break;
         default:
@@ -55,100 +81,88 @@ Boolean isAnalisysSpecialChar(char ch) {
 
 Token* recognizeSpecialChar(char ch, char next_ch, int col) {
 
-    if (ch == ' ' || ch == '\0' || ch == '\n') { 
-        printf("Return NULL\n");
+    if (ch == ' ' || ch == '\0' || ch == '\n' || ch == '\t') { 
         return NULL;
     }
-
-    char lexeme[3];
 
     switch (ch) {
 
         case '(':
-            lexeme[0] = '(';
-            lexeme[1] = '\0';
-
-            return newToken(lexeme, catOpPar, current_line, col);
+            return newToken("(", catOpPar, current_line, col);
             break;
 
         case ')':
-            lexeme[0] = ')';
-            lexeme[1] = '\0';
-
-            return newToken(lexeme, catClsPar, current_line, col);
+            return newToken(")", catClsPar, current_line, col);
             break;
 
         case '[':
-            lexeme[0] = '[';
-            lexeme[1] = '\0';
-
-            return newToken(lexeme, catOpBrac, current_line, col);
+            return newToken("[", catOpBrac, current_line, col);
             break;
 
         case ']':
-            lexeme[0] = ']';
-            lexeme[1] = '\0';
-
-            return newToken(lexeme, catClsBrac, current_line, col);
+            return newToken("]", catClsBrac, current_line, col);
             break;
 
         case ',':
-            lexeme[0] = ',';
-            lexeme[1] = '\0';
+            return newToken(",", catComma, current_line, col);
+            break;
 
-            return newToken(lexeme, catComma, current_line, col);
+        case '=':
+            return newToken("=", catOpeEq, current_line, col);
             break;
 
         case '+':
             if (next_ch == '+') {
-                // ++ case
-                lexeme[0] = '+';
-                lexeme[1] = '+';
-                lexeme[2] = '\0';
+                // ++ case and eat next_token
+                ++_column;
+                return newToken("++", catOpeConc, current_line, col);
+            } 
 
-                return newToken(lexeme, catOpeConc, current_line, col);
-            } else {
-                // + case
-                lexeme[0] = '+';
-                lexeme[1] = '\0';
-
-                return newToken(lexeme, catOpeSum, current_line, col);
-            }
+            return newToken("+", catOpeSum, current_line, col);
             break;
 
         case '-':
-            lexeme[0] = '-';
-            lexeme[1] = '\0';
-
-            return newToken(lexeme, catOpeSub, current_line, col);
+            return newToken("-", catOpeSub, current_line, col);
             break;
 
         case '*':
-            lexeme[0] = '*';
-            lexeme[1] = '\0';
-
-            return newToken(lexeme, catOpeMult, current_line, col);
+            return newToken("*", catOpeMult, current_line, col);
             break;
 
         case '/':
-            lexeme[0] = '/';
-            lexeme[1] = '\0';
-
-            return newToken(lexeme, catOpeDiv, current_line, col);
+            return newToken("/", catOpeDiv, current_line, col);
             break;
 
         case '%':
-            lexeme[0] = '%';
-            lexeme[1] = '\0';
-
-            return newToken(lexeme, catOpeMod, current_line, col);
+            return newToken("%", catOpeMod, current_line, col);
             break;
 
         case ';':
-            lexeme[0] = '/';
-            lexeme[1] = '\0';
+            return newToken(";", catSemiCol, current_line, col);
+            break;
 
-            return newToken(lexeme, catSemiCol, current_line, col);
+        case '!':
+            return newToken("!", catOpeNeg, current_line, col);
+            break;
+
+        case '>':
+            if (next_ch == '=') {
+                // >= case and eat next_token
+                ++_column;
+                return newToken(">=", catOpeGte, current_line, col);
+            }
+
+            return newToken(">", catOpeGt, current_line, col);
+            break;
+
+        case '<':
+            if (next_ch == '=') {
+                // <= case and eat next_token
+                ++_column;
+                return newToken("<=", catOpeLte, current_line, col);
+            }
+
+            return newToken("<", catOpeLt, current_line, col);
             break;
 
         default:
@@ -158,27 +172,29 @@ Token* recognizeSpecialChar(char ch, char next_ch, int col) {
 }
 
 Boolean analyseLine(char* line) {
-
-    int i;
+    
     int buffer_index = 0;
 
     char buffer[31];
 
-    for (i = 0; i <= strlen(line); ++i) {
+    for (_column = 0; _column <= strlen(line); ++_column) {
 
-        if (isalnum(line[i]) || line[i] == '_') {
-            buffer[buffer_index++] = line[i];
+        if (isalnum(line[_column]) || line[_column] == '_') {
+            buffer[buffer_index++] = line[_column];
         }
 
-        if (isAnalisysSpecialChar(line[i]) && buffer_index != 0) {
+        if (isAnalisysSpecialChar(line[_column])) {
 
-            char analisys_special_char = line[i];
-            buffer[buffer_index] = '\0';
-            buffer_index = 0;
+            if (buffer_index != 0) {
 
-            _DEBUG printf("\t[Info] Lexeme found: \"%s\"\n", buffer);
+                char analisys_special_char = line[_column];
+                buffer[buffer_index] = '\0';
+                buffer_index = 0;
 
-            Token* recognized_char = recognizeSpecialChar(line[i], line[i+1], i);
+                _DEBUG printf("\t[Info] Lexeme found: \"%s\"\n", buffer);
+            }
+
+            Token* recognized_char = recognizeSpecialChar(line[_column], line[_column+1], _column);
 
             if (recognized_char != NULL) {
                 _DEBUG printf("\t[Info] Lexeme found: \"%s\"\n", recognized_char->lexeme);
@@ -186,6 +202,6 @@ Boolean analyseLine(char* line) {
             }
             
             free(recognized_char);
-        }
+        } 
     }
 }

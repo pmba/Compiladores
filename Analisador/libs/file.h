@@ -61,16 +61,16 @@ char* readLine() {
 
         if (emptyLine(line)) {
 
-            _DEBUG printf("[Info] Empty line #%d removed.\n", current_line);
+            _DEBUG printf("\n[Info] Empty line #%d removed.\n", current_line);
             return readLine();    
         } else {
 
-            _DEBUG printf("[Info] Line read: \"%s\"\n", line);
+            _DEBUG printf("\n[Info] Line read: \"%s\"\n", line);
             return line;
         }
     }
 
-    return NULL;
 
     free(line);
+    return NULL;
 }
