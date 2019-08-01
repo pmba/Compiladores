@@ -65,7 +65,8 @@ char* readLine() {
             return readLine();    
         } else {
 
-            _DEBUG printf("\n[Info] Line read: \"%s\"\n", line);
+            // _LINEREADSHOW printf("\n[Info] Line read: \"%s\"\n", line);
+            _LINEREADSHOW(line);
             return line;
         }
     }

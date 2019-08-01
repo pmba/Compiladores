@@ -9,6 +9,7 @@ Ciencia da Computacao
 *****************************/
 
 #define _DEBUG if(False)
+#define _LINEREADPRINT if (True)
 
 #define NonTerminalQuant 41
 #define TerminalsQuant 49
@@ -187,4 +188,25 @@ Token* newStrChToken(char* lex, int row, int col) {
 
 void printToken(Token* token) {
     printf("          [%04d, %04d] (%04d, %20s) {%s}\n", token->row, token->col, token->category, categoryToString[token->category], token->lexeme);
+}
+
+void _LINEREADSHOW(char* line) {
+
+    _LINEREADPRINT {
+
+        int i, j;
+
+        for (i = 0; line[i] != '\0'; ++i) {
+            if (line[i] != ' ') break;
+        }
+
+        printf("\n        Line Read: '");
+
+        for (j = i; line[j] != '\0'; ++j) {
+
+            printf("%c", line[j]);
+        }
+
+        printf("'\n");
+    }
 }
