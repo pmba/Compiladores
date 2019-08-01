@@ -16,21 +16,54 @@ regex_t regular_exp[RegularExpressionsQuant] = {0};
 // DO NOT CHANGE DE ORDER
 const char regular_exp_pattern[][90] = {
 
-    "^function$", "^do$", "^end$", 
-    "^main$", "^int$", "^float$", "^string$",
-    "^bool$", "^char$", "^void$", "^\\($", "^)$",
-    "^,$", "^if$", "^while$", "^from$", "^to$", 
-    "^else$", "^doing$", "^;$", "^\\[$", "^]$",
-    "^print$", "^read$", "^return$", "^\\+\\+$", 
-    "^or$", "^and$", "^!$", "^=$", "^==$", 
-    "^!=$", "^(true|false)$", "^>$", "^>=$",
-    "^<$", "^<=$", "^\\+$", "^\\-$", "^\\*$",
-    "^\\/$", "^\\%$", 
-    "(_)([a-zA-Z])([a-zA-Z|[0-9]|_)*",
-    "([a-zA-Z])([a-zA-Z|[0-9]|_)*",
-    "^-?[0-9]+$", "^-?[0-9]+(.[0-9]+)$",
-    "^\"([ a-zA-Z]|[0-9]|[.,:;\\?!\\+\\-\\*/\\_@&%\\$<>=()])*(\\[|\\])*(\\{\\})*(\\|)*(\')*\"$",
-    "^\'([ a-zA-Z0-9.,:;\\?!\\+\\-\\*/\\_@&%\\$<>=(){}[]|])\'$"
+    "^function$",
+    "^do$", 
+    "^end$", 
+    "^main$", 
+    "^int$", 
+    "^float$", 
+    "^string$",
+    "^bool$", 
+    "^char$", 
+    "^void$", 
+    "^\\($", 
+    "^)$",
+    "^,$", 
+    "^if$", 
+    "^while$", 
+    "^from$", 
+    "^to$", 
+    "^else$", 
+    "^doing$", 
+    "^;$", 
+    "^\\[$", 
+    "^]$",
+    "^print$", 
+    "^read$", 
+    "^return$", 
+    "^\\+\\+$", 
+    "^or$", 
+    "^and$", 
+    "^!$", 
+    "^=$", 
+    "^==$", 
+    "^!=$", 
+    "^(true|false)$", 
+    "^>$", 
+    "^>=$",
+    "^<$", 
+    "^<=$", 
+    "^\\+$", 
+    "^\\-$", 
+    "^\\*$",
+    "^\\/$", 
+    "^\\%$", 
+    "^(_)([a-zA-Z])([a-zA-Z|[0-9]|_)*$",
+    "^([a-zA-Z])([a-zA-Z|[0-9]|_)*$",
+    "^-?[0-9]+$", 
+    "^-?[0-9]+(.[0-9]+)$",
+    "^\"[ a-zA-Z0-9.,:;\\?!\\+\\-\\*/\\_@&%\\$<>=()'{}[]|]*\"$",
+    "^\'[ a-zA-Z0-9.,:;\\?!\\+\\-\\*/\\_@&%\\$<>=(){}[]|]\'$"
 
 };
 
@@ -88,11 +121,16 @@ Token* recognizeWord(char* word, int col) {
     int i;
 
     for (i = 0; i < RegularExpressionsQuant; ++i) {
-
         if (regexec(&regular_exp[i], word, 0, (regmatch_t*) NULL, 0) == 0) {
             _DEBUG printf("    [Info] Regex Match #%d Found \"%s\", Category \"%s\"\n", i, word, categoryToString[i]);
-            
-            return newToken(word, i, current_line, col);
+
+            char* aux = (char*) malloc(strlen(word));
+            for(int j = 0; j < strlen(word); j++) {
+                aux[j] = word[j];
+            }
+            aux[strlen(word)] = '\0';
+
+            return newToken(aux, (Category)i, current_line, col);
         } 
     }
 
@@ -196,7 +234,7 @@ Token* recognizeSpecialChar(char ch, char next_ch, int col) {
     }
 }
 
-Boolean analyseLine(char* line, struct list* list) {
+List* analyseLine(char* line, List* list) {
     
     int buffer_index = 0;
 
@@ -218,8 +256,11 @@ Boolean analyseLine(char* line, struct list* list) {
 
                 _DEBUG printf("\t[Info] Lexeme found: \"%s\"\n", buffer);
                 Token* recognized_word = recognizeWord(buffer, _column);
-                pushList(list, recognized_word);
-                printToken(recognized_word);
+                
+                if(recognized_word->category != _unrecognized) {
+                    list = pushList(list, recognized_word);
+                }
+                //printToken(recognized_word);
             }
 
             if (line[_column] == '"' || line[_column] == '\'') {
@@ -227,8 +268,6 @@ Boolean analyseLine(char* line, struct list* list) {
                 Boolean _closed_cte = False;
 
                 for (j = _column + 1; line[j] != '\0'; ++j) {
-
-                    // printf("\t%c\n", line[j]);
 
                     if (line[j] == line[_column]) {
                         _closed_cte = True;
@@ -246,11 +285,10 @@ Boolean analyseLine(char* line, struct list* list) {
                     }
 
                     _cte_lex[j-_column] = '\0';
-
                     Token* recognized_cte = newStrChToken(_cte_lex, current_line, _column);
-                    printToken(recognized_cte);
-                    pushList(list, recognized_cte);
-                    _column += _cte_length + 1;
+                    //printToken(recognized_cte);
+                    list = pushList(list, recognized_cte);
+                    _column += _cte_length;
                     continue;
                 }
             }
@@ -260,9 +298,11 @@ Boolean analyseLine(char* line, struct list* list) {
             if (recognized_char != NULL) {
 
                 _DEBUG printf("\t[Info] Lexeme found: \"%s\", Category \"%s\"\n", recognized_char->lexeme, categoryToString[recognized_char->category]);
-                pushList(list, recognized_char);
-                printToken(recognized_char);
+                list = pushList(list, recognized_char);
+                //printToken(recognized_char);
             }
         } 
     }
+
+    return list;
 }

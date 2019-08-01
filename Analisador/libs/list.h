@@ -6,27 +6,33 @@ typedef struct list {
 
 List* newList() {
 
-    List* new_list = malloc(sizeof(List*));
+    List* new_list = malloc(sizeof(List));
     new_list->head = NULL;
 
     return new_list;
 }
 
-void pushList(List* list, Token* newToken) {
+List* pushList(List* list, Token* newToken) {
+
+    _DEBUG printf("Add %s \n", newToken->lexeme);
 
     if(list->head == NULL) {
         list->head = newToken;
-        return;
+    } else {
+
+        Token* aux = list->head;
+
+        _DEBUG printf("%s -> ", aux->lexeme);
+
+        while(aux->next != NULL) {
+            aux = aux->next;
+            _DEBUG printf("%s -> ", aux->lexeme);
+        }
+
+        aux->next = newToken;        
     }
-
-    Token* aux = list->head;
-
-    while(list->head->next != NULL) {
-        list->head = list->head->next;
-    }
-
-    list->head->next = newToken;
-    list->head = aux;
+    _DEBUG printf("\n ok \n\n");
+    return list;
 }
 
 Token* nextToken(List* list) {

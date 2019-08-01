@@ -19,7 +19,7 @@ function int _main() do
         print(result);
     end
     else do
-        print(c);
+        print(c ++ "kkkk kkkk");
     end
 
     return 1;

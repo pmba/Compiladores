@@ -39,12 +39,12 @@ function int main() do
     int size;
     int i;
     
-    print((*\color{myred}"Insira a quantidade de números"*));
+    print("Insira a quantidade de números");
     read(size);
     
     int numbers[size];
     
-    print((*\color{myred}"Insira os numeros"*));
+    print("Insira os numeros");
     
     from i = 0 to size do
         read(numbers[i]);

@@ -155,7 +155,7 @@ typedef struct token {
 
 Token* newToken(char* lex, Category cat, int row, int col) {
 
-    Token* new_token = malloc(sizeof(Token));
+    Token* new_token = (Token*) malloc(sizeof(Token) +20);
 
     new_token->lexeme = lex;
     new_token->category = cat;
@@ -169,10 +169,20 @@ Token* newToken(char* lex, Category cat, int row, int col) {
 Token* newStrChToken(char* lex, int row, int col) {
 
     Category token_cat;
-    if (lex[0] == '\'')  token_cat = catCteChar;
-    if (lex[0] == '"') token_cat = catCteStr;
+    if (lex[0] == '\'' || lex[0] == '"') {
+            
+        char* aux = (char*) malloc(strlen(lex));
+        for(int j = 0; j < strlen(lex); j++) {
+            aux[j] = lex[j];
+        }
+        aux[strlen(lex)] = '\0';
+        
+        if (lex[0] == '\'' ) return newToken(aux, catCteChar, row, col);
+        if (lex[0] == '"') return newToken(aux, catCteStr, row, col);
+    }
 
-    return newToken(lex, token_cat, row, col);
+    printf("Erro newStrChToken");
+    return NULL;
 }
 
 void printToken(Token* token) {

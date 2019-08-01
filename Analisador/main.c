@@ -34,24 +34,24 @@ int main(int argc, char const *argv[]) {
     if (!file_opened) exit(EXIT_FAILURE); 
     if (!initializeLexicalAnalyzer()) exit(EXIT_FAILURE);
 
-    printf("\n          [Row ,  Col] (Cat , %20s) {%s}\n\n", "Category String", "Lexeme");
+    printf("\n          [Row ,  Col] (Cat , %20s) {%s}\n\n", "Category", "Lexeme");
 
+      
     char* line_read = readLine();
     
-    struct list* myList = newList();
+    List* myList = newList();
 
     while (line_read != NULL) {
-        analyseLine(line_read, myList);
+        myList = analyseLine(line_read, myList);
         line_read = readLine();
     }
-    
-    printf("\n\n");
-    
+    myList = pushList(myList, newToken("EOF", catEOF, current_line+1, 0));
+     
     Token* tk;
     while((tk = nextToken(myList)) != NULL) {
         printToken(tk);
     }
-  
+
     closeFile();
 
     return 0;
