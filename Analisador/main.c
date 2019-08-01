@@ -32,6 +32,8 @@ int main(int argc, char const *argv[]) {
     if (!file_opened) exit(EXIT_FAILURE); 
     if (!initializeLexicalAnalyzer()) exit(EXIT_FAILURE);
 
+    printf("\n          [Row ,  Col] (Cat , %20s) {%s}\n\n", "Category String", "Lexeme");
+
     char* line_read = readLine();
     
     while (line_read != NULL) {

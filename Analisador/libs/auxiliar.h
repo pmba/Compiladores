@@ -8,7 +8,7 @@ Ciencia da Computacao
 
 *****************************/
 
-#define _DEBUG if(True)
+#define _DEBUG if(False)
 
 #define NonTerminalQuant 41
 #define TerminalsQuant 49
@@ -162,4 +162,17 @@ Token* newToken(char* lex, Category cat, int row, int col) {
     new_token->col = col;
 
     return new_token;
+}
+
+Token* newStrChToken(char* lex, int row, int col) {
+
+    Category token_cat;
+    if (lex[0] == '\'')  token_cat = catCteChar;
+    if (lex[0] == '"') token_cat = catCteStr;
+
+    return newToken(lex, token_cat, row, col);
+}
+
+void printToken(Token* token) {
+    printf("          [%04d, %04d] (%04d, %20s) {%s}\n", token->row, token->col, token->category, categoryToString[token->category], token->lexeme);
 }

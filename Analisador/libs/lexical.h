@@ -72,6 +72,8 @@ Boolean isAnalisysSpecialChar(char ch) {
         case '!':
         case '>':
         case '<':
+        case '"':
+        case '\'':
             return True;
             break;
         default:
@@ -85,13 +87,17 @@ Token* recognizeWord(char* word, int col) {
     _DEBUG printf("  [Info] Searching for regex match \"%s\"\n", word);
 
     int i;
+
     for (i = 0; i < RegularExpressionsQuant; ++i) {
 
         if (regexec(&regular_exp[i], word, 0, (regmatch_t*) NULL, 0) == 0) {
             _DEBUG printf("    [Info] Regex Match #%d Found \"%s\", Category \"%s\"\n", i, word, categoryToString[i]);
-            return NULL;
-        }
+            
+            return newToken(word, i, current_line, col);
+        } 
     }
+
+    return newToken("_missing", _unrecognized, current_line, col);
 }
 
 Token* recognizeSpecialChar(char ch, char next_ch, int col) {
@@ -124,6 +130,11 @@ Token* recognizeSpecialChar(char ch, char next_ch, int col) {
 
         case '=':
             return newToken("=", catOpeEq, current_line, col);
+            break;
+
+        case '"':
+        case '\'':
+            return newToken("_missing", _unrecognized, current_line, col);
             break;
 
         case '+':
@@ -207,14 +218,49 @@ Boolean analyseLine(char* line) {
                 buffer_index = 0;
 
                 _DEBUG printf("\t[Info] Lexeme found: \"%s\"\n", buffer);
-                recognizeWord(buffer, _column);
+                Token* recognized_word = recognizeWord(buffer, _column);
+                printToken(recognized_word);
+            }
+
+            if (line[_column] == '"' || line[_column] == '\'') {
+                int j;
+                Boolean _closed_cte = False;
+
+                for (j = _column + 1; line[j] != '\0'; ++j) {
+
+                    // printf("\t%c\n", line[j]);
+
+                    if (line[j] == line[_column]) {
+                        _closed_cte = True;
+                        break;
+                    }
+                }
+
+                int _cte_length = _closed_cte ? j-(_column) : 0;
+
+                if (_cte_length > 0) {
+                    char _cte_lex[_cte_length+2];
+
+                    for (j = _column; j <= _cte_length + _column; ++j) {
+                        _cte_lex[j-_column] = line[j];
+                    }
+
+                    _cte_lex[j-_column] = '\0';
+
+                    Token* recognized_cte = newStrChToken(_cte_lex, current_line, _column);
+                    printToken(recognized_cte);
+
+                    _column += _cte_length + 1;
+                    continue;
+                }
             }
 
             Token* recognized_char = recognizeSpecialChar(line[_column], line[_column+1], _column);
 
             if (recognized_char != NULL) {
-                _DEBUG printf("\t[Info] Lexeme found: \"%s\", Category \"%s\"\n", recognized_char->lexeme, categoryToString[recognized_char->category]);
 
+                _DEBUG printf("\t[Info] Lexeme found: \"%s\", Category \"%s\"\n", recognized_char->lexeme, categoryToString[recognized_char->category]);
+                printToken(recognized_char);
             }
             
             free(recognized_char);
