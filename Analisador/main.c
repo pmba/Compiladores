@@ -42,14 +42,6 @@ int main(int argc, char const *argv[]) {
         line_read = readLine();
     }
 
-    // Stack* stack = createStack();
-
-    // printf("%d\n", catFunction);
-
-
-    // clearStack(stack);
-    // free(stack);
-
     closeFile();
 
     return 0;

@@ -9,6 +9,8 @@ Ciencia da Computacao
 *****************************/
 
 #define POP -1
+
+// TODO: ERROR RECOVERING
 #define ERROR -2
 
 
