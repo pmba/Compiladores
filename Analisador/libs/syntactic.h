@@ -8,9 +8,6 @@ Ciencia da Computacao
 
 *****************************/
 
-#define NonTerminalQuant 41
-#define TerminalsQuant 49
-
 #define POP -1
 #define ERROR -2
 
@@ -59,32 +56,3 @@ int preditive_table[NonTerminalQuant][TerminalsQuant] = {
     {-1,-1,-1,-2,-1,-1,-1,-1,-1,-1,-1,-2,-1,-1,-2,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-2,-2,-2,-2,81,82,-1,-1,-1,-1},
     {-1,-1,-1,-2,-1,-1,-1,-1,-1,-1,-1,-2,-1,-1,-2,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-2,-2,-2,-2,-1,-1,83,84,85,-1}
 };
-
-typedef enum non_term {
-
-    S = 0, 
-    DefFunList, FunId, VarType, FunType, OpClPar, Par,
-    ParAux, SentList, SentListAux, Sent, Else, Doing, Decl,
-    Id, VecType, Atr, Print, Read, FunCall, Return, Exp,
-    ExpRec, BoolExp, BoolExpRec, BoolTerm, BoolTermRec, 
-    BoolFac, EqExp, EqExpAux, EqOpe, RelExp, RelExpRec, 
-    RelOpe, ArExp, ArExpRec, ArTerm, ArTermRec,ArFac, 
-    ArOpe, MultOpe
-
-} NonTerminal;
-
-typedef enum category {
-
-    catFunction = NonTerminalQuant, 
-    catDo, catEnd, catFunId, catMain, catInt,
-    catFloat, catString, catBool, catChar, catVoid, catOpPar,
-    catClsPar, catComma, catId, catIf, catWhile, catFrom, 
-    catTo, catElse, catDoing, catSemiCol, catOpBrac, 
-    catClsBrac, catOpeAtr, catPrint, catRead, carReturn, 
-    catOpeConc, catOpeOr, catOpeAnd, catOpeNeg, catOpeEq, 
-    catOpeDif, catCteBool, catOpeGt, catOpeGte, catOpeLt, 
-    catOpeLte, catCteInt, catCteFloat, catCteStr, catCteChar, 
-    catOpeSum, catOpeSub, catOpeMult, catOpeDiv, catOpeRest, 
-    catEOF
-
-} Category;

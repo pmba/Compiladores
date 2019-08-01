@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <regex.h>
 #include "./libs/auxiliar.h"
 #include "./libs/stack.h"
 #include "./libs/file.h"
