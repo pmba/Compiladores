@@ -14,6 +14,7 @@ int _column;
 
 regex_t regular_exp[RegularExpressionsQuant] = {0};
 
+// DO NOT CHANGE DE ORDER
 const char regular_exp_pattern[][90] = {
 
     "^function$", "^do$", "^end$", 
@@ -40,7 +41,7 @@ Boolean initializeLexicalAnalyzer() {
     for (i = 0; i < RegularExpressionsQuant; ++i) {
 
         _DEBUG printf("  [Regex] Compiling regex #%d\n", i);
-        
+
         if (regcomp(&regular_exp[i], regular_exp_pattern[i], REG_EXTENDED)) {
             printf("[Error] Can't compile regex [%d]: \"%s\"\n", i, regular_exp_pattern[i]);
             return False;
@@ -76,6 +77,20 @@ Boolean isAnalisysSpecialChar(char ch) {
         default:
             return False;
             break;
+    }
+}
+
+Token* recognizeWord(char* word, int col) {
+
+    _DEBUG printf("  [Info] Searching for regex match \"%s\"\n", word);
+
+    int i;
+    for (i = 0; i < RegularExpressionsQuant; ++i) {
+
+        if (regexec(&regular_exp[i], word, 0, (regmatch_t*) NULL, 0) == 0) {
+            _DEBUG printf("    [Info] Regex Match #%d Found \"%s\", Category \"%s\"\n", i, word, categoryToString[i]);
+            return NULL;
+        }
     }
 }
 
@@ -192,12 +207,13 @@ Boolean analyseLine(char* line) {
                 buffer_index = 0;
 
                 _DEBUG printf("\t[Info] Lexeme found: \"%s\"\n", buffer);
+                recognizeWord(buffer, _column);
             }
 
             Token* recognized_char = recognizeSpecialChar(line[_column], line[_column+1], _column);
 
             if (recognized_char != NULL) {
-                _DEBUG printf("\t[Info] Lexeme found: \"%s\"\n", recognized_char->lexeme);
+                _DEBUG printf("\t[Info] Lexeme found: \"%s\", Category \"%s\"\n", recognized_char->lexeme, categoryToString[recognized_char->category]);
 
             }
             

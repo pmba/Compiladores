@@ -20,7 +20,7 @@ typedef enum boolean {
 
 typedef enum non_term {
 
-    S = 0, 
+    S, 
     DefFunList, FunId, VarType, FunType, OpClPar, Par,
     ParAux, SentList, SentListAux, Sent, Else, Doing, Decl,
     Id, VecType, Atr, Print, Read, FunCall, Return, Exp,
@@ -31,9 +31,10 @@ typedef enum non_term {
 
 } NonTerminal;
 
+// DO NOT CHANGE DE ORDER
 typedef enum category {
 
-    catFunction = NonTerminalQuant, 
+    catFunction, 
     catDo, 
     catEnd, 
     catMain, 
@@ -85,6 +86,62 @@ typedef enum category {
     _unrecognized
 
 } Category;
+
+// DO NOT CHANGE DE ORDER
+const char categoryToString[][14] = {
+
+    "catFunction", 
+    "catDo", 
+    "catEnd", 
+    "catMain", 
+    "catInt",
+    "catFloat", 
+    "catString", 
+    "catBool", 
+    "catChar", 
+    "catVoid", 
+    "catOpPar",
+    "catClsPar", 
+    "catComma", 
+    "catIf", 
+    "catWhile", 
+    "catFrom", 
+    "catTo", 
+    "catElse", 
+    "catDoing", 
+    "catSemiCol", 
+    "catOpBrac", 
+    "catClsBrac", 
+    "catPrint", 
+    "catRead",
+    "carReturn", 
+    "catOpeConc",
+    "catOpeOr",
+    "catOpeAnd", 
+    "catOpeNeg", 
+    "catOpeAtr", 
+    "catOpeEq", 
+    "catOpeDif", 
+    "catCteBool", 
+    "catOpeGt", 
+    "catOpeGte", 
+    "catOpeLt", 
+    "catOpeLte", 
+    "catOpeSum", 
+    "catOpeSub", 
+    "catOpeMult", 
+    "catOpeDiv", 
+    "catOpeMod", 
+    "catFunId", 
+    "catId", 
+    "catCteInt", 
+    "catCteFloat", 
+    "catCteStr", 
+    "catCteChar", 
+    "catEOF",
+    "_unrecognized"
+
+};
 
 typedef struct token {
 
