@@ -1,0 +1,16 @@
+function void _sum(int a, int b) do
+    return a+b;
+end
+
+function int _main() do
+
+    int a, b[];
+    
+    a = 10;
+    b = 20;
+
+    print(_sum(a, b));
+
+    return 1;
+
+end

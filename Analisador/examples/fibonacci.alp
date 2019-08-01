@@ -1,4 +1,4 @@
-function int fibonacci(int target) do
+function int _fibonacci(int target) do
 
     int a;
     int b;
@@ -23,14 +23,14 @@ function int fibonacci(int target) do
     return 1;
 end
 
-function int main() do
+function int _main() do
 
     int number;
     int result;
 
     read(number);
 
-    result = fibonacci(number);
+    result = _fibonacci(number);
 
     return 0;
 

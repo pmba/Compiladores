@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <regex.h>
+#include <ctype.h>
 #include "./libs/auxiliar.h"
 #include "./libs/stack.h"
 #include "./libs/file.h"
@@ -30,11 +31,13 @@ int main(int argc, char const *argv[]) {
 
     if (!file_opened) exit(EXIT_FAILURE); 
 
-    readLine();
-    readLine();
-    readLine();
-    readLine();
-    readLine();
+    char* line_read = readLine();
+    
+    while (line_read != NULL) {
+
+        analyseLine(line_read);
+        line_read = readLine();
+    }
 
     // Stack* stack = createStack();
 

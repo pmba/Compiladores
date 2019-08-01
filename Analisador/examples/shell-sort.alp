@@ -1,4 +1,4 @@
-function int[] shellSort(int nums[], int size) do
+function int[] _shellSort(int nums[], int size) do
     int i;
     int j;
     int value;
@@ -54,7 +54,7 @@ function int main() do
         print(numbers[i]);
     end
     
-    numbers = shellSort(numbers, size);
+    numbers = _shellSort(numbers, size);
     
     from i = 0 to size do
         print(numbers[i]);

@@ -1,4 +1,4 @@
-function int main() do
+function int _main() do
                    
     print("Hello World");
     return 0;
