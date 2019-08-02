@@ -1,72 +1,64 @@
-typedef struct list {
-    Token* head;
+ListNode* newListNode(Token* token) {
 
-} List;
+    ListNode* new_list_node = malloc(sizeof(ListNode));
+    new_list_node->token = token;
+    new_list_node->next = NULL;
 
-
-List* newList() {
-
-    List* new_list = malloc(sizeof(List));
-    new_list->head = NULL;
-
-    return new_list;
+    return new_list_node;
 }
 
-List* pushList(List* list, Token* newToken) {
+ListNode* pushList(ListNode* head, Token* token) {
 
-    _DEBUG printf("Add %s \n", newToken->lexeme);
-
-    if(list->head == NULL) {
-        list->head = newToken;
+    if(head == NULL) {
+        head = newListNode(token);
     } else {
 
-        Token* aux = list->head;
-
-        _DEBUG printf("%s -> ", aux->lexeme);
+        ListNode* aux = head;
 
         while(aux->next != NULL) {
-            aux = aux->next;
-            _DEBUG printf("%s -> ", aux->lexeme);
+            aux = aux->next;            
         }
 
-        aux->next = newToken;        
-    }
-    _DEBUG printf("\n ok \n\n");
-    return list;
+        aux->next = newListNode(token);        
+    }  
+
+    return head;
 }
 
-Token* nextToken(List* list) {
-    if (list->head == NULL) return NULL;
+Token* nextToken() {
 
-    if (list->head->next == NULL){
-        Token* aux = list->head;
-        list->head = NULL;
+    if (TokenList == NULL) {
+
+        analyseLine();
+    }
+
+    if (TokenList->next == NULL){
+        Token* aux = TokenList->token;
+        TokenList = NULL;
+
         return aux;
     } 
      
     else {
-        Token* aux = list->head;
-        list->head = list->head->next;
+        Token* aux = TokenList->token;
+        TokenList = TokenList->next;
 
         return aux;
     }
 }
 
-void printList (List* list) {
+void printList (ListNode* head) {
 
-    if(list->head != NULL) {
+    if(head != NULL) {
 
-        Token* aux = list->head;
+        ListNode* aux = head;
         
-        printToken(list->head);
-        
-        while(list->head->next != NULL) {
-            list->head = list->head->next;
-            printToken(list->head);
+        while(aux != NULL) {
+            printToken(aux->token);
+            aux = aux->next;
         }
 
-        list->head = aux;
-
+        free(aux);
     } else {
         printf("Empty list\n");
     }

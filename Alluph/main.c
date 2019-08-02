@@ -36,24 +36,14 @@ int main(int argc, char const *argv[]) {
 
     printf("\n          [Row ,  Col] (Cat , %20s) {%s}\n\n", "Category", "Lexeme");
 
-    List* myList = newList();
-    Token* tk;
-    
-    char* line_read = readLine();
+    Token* current_token = nextToken();
 
-    while (line_read != NULL) {
-
-        myList = analyseLine(line_read, myList);
-
-        while((tk = nextToken(myList)) != NULL) {
-            printToken(tk);
-        }       
-       
-       line_read = readLine();
+    while(current_token->category != catEOF) {
+        printToken(current_token);
+        current_token = nextToken();
     }
 
-    myList = pushList(myList, newToken("EOF", catEOF, current_line, _column+1));
-    printToken(nextToken(myList));
+    // printList(TokenList);
 
     closeFile();
 
