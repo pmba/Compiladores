@@ -36,7 +36,7 @@ int main(int argc, char const *argv[]) {
 
     printf("\n          [Row ,  Col] (Cat , %20s) {%s}\n\n", "Category", "Lexeme");
 
-    List* myList = newList();
+/*     List* myList = newList();
     Token* tk;
     
     char* line_read = readLine();
@@ -45,7 +45,7 @@ int main(int argc, char const *argv[]) {
 
         myList = analyseLine(line_read, myList);
 
-        while((tk = nextToken(myList)) != NULL) {
+        while((tk = popToken(myList)) != NULL) {
             printToken(tk);
         }       
        
@@ -53,8 +53,22 @@ int main(int argc, char const *argv[]) {
     }
 
     myList = pushList(myList, newToken("EOF", catEOF, current_line, _column+1));
-    printToken(nextToken(myList));
+    printToken(popToken(myList));
+ */
 
+
+    List* listTest = newList();
+    listTest = pushList(listTest, newToken("Teste1", catId, 0, 0));
+    listTest = pushList(listTest, newToken("Teste2", catId, 0, 0));
+    listTest = pushList(listTest, newToken("Teste3", catId, 0, 0));
+    listTest = pushList(listTest, newToken("Teste4", catId, 0, 0));
+    printList(listTest);
+    printf("\n\n");
+    printToken(popToken(listTest));
+    printToken(popToken(listTest));
+    printToken(popToken(listTest));
+    printToken(popToken(listTest));
+    printToken(popToken(listTest));
     closeFile();
 
     return 0;
