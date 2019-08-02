@@ -25,28 +25,6 @@ ListNode* pushList(ListNode* head, Token* token) {
     return head;
 }
 
-Token* nextToken() {
-
-    if (TokenList == NULL) {
-
-        analyseLine();
-    }
-
-    if (TokenList->next == NULL){
-        Token* aux = TokenList->token;
-        TokenList = NULL;
-
-        return aux;
-    } 
-     
-    else {
-        Token* aux = TokenList->token;
-        TokenList = TokenList->next;
-
-        return aux;
-    }
-}
-
 void printList (ListNode* head) {
 
     if(head != NULL) {

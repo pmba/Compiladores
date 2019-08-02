@@ -234,7 +234,7 @@ Token* recognizeSpecialChar(char ch, char next_ch, int col) {
     }
 }
 
-void analyseLine() {
+Boolean analyseLine() {
 
     char* line = readLine();
 
@@ -306,8 +306,8 @@ void analyseLine() {
                 
                 }
             } 
-        }
-    }
 
-    TokenList = pushList(TokenList, newToken("EOF", catEOF, current_line, _column+1));
+        } return True;
+    } else return False;
+
 }

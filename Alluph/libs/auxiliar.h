@@ -14,8 +14,6 @@ Ciencia da Computacao
 #define NonTerminalQuant 41
 #define TerminalsQuant 49
 
-void analyseLine();
-
 typedef enum boolean {
 
     False, True

@@ -20,6 +20,29 @@ Universidade Federal de Alagoas
 Ciencia da Computacao
 
 *****************************/
+Token* nextToken() {
+
+    if (TokenList == NULL) {
+
+        if(!analyseLine()) {
+            return newToken("EOF", catEOF, current_line, _column+1);
+        }
+    }
+
+    if (TokenList->next == NULL){
+        Token* aux = TokenList->token;
+        TokenList = NULL;
+
+        return aux;
+    } 
+     
+    else {
+        Token* aux = TokenList->token;
+        TokenList = TokenList->next;
+
+        return aux;
+    }
+}
 
 int main(int argc, char const *argv[]) {
 
@@ -37,10 +60,11 @@ int main(int argc, char const *argv[]) {
     printf("\n          [Row ,  Col] (Cat , %20s) {%s}\n\n", "Category", "Lexeme");
 
     Token* current_token = nextToken();
+    printToken(current_token);
 
     while(current_token->category != catEOF) {
-        printToken(current_token);
         current_token = nextToken();
+        printToken(current_token);
     }
 
     // printList(TokenList);
