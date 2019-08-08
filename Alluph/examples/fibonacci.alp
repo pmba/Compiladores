@@ -33,7 +33,7 @@ function int _main() do
 
     read(number);
 
-    result = _fibonacci(number);
+    _fibonacci(number);
 
     return 0;
 
