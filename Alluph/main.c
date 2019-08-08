@@ -3,12 +3,12 @@
 #include <string.h>
 #include <regex.h>
 #include <ctype.h>
-#include "./libs/auxiliar.h"
-#include "./libs/list.h"
-#include "./libs/stack.h"
-#include "./libs/file.h"
-#include "./libs/syntactic.h"
-#include "./libs/lexical.h"
+#include "./inc/auxiliar.h"
+#include "./inc/list.h"
+#include "./inc/stack.h"
+#include "./inc/file.h"
+#include "./inc/syntactic.h"
+#include "./inc/lexical.h"
 
 
 /****************************
@@ -57,8 +57,6 @@ int main(int argc, char const *argv[]) {
     if (!file_opened) exit(EXIT_FAILURE); 
     if (!initializeLexicalAnalyzer()) exit(EXIT_FAILURE);
 
-    printf("\n          [Row ,  Col] (Cat , %20s) {%s}\n\n", "Category", "Lexeme");
-
     Token* current_token = nextToken();
     printToken(current_token);
 
@@ -66,8 +64,6 @@ int main(int argc, char const *argv[]) {
         current_token = nextToken();
         printToken(current_token);
     }
-
-    // printList(TokenList);
 
     closeFile();
 

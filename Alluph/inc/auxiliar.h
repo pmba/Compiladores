@@ -164,7 +164,7 @@ ListNode* TokenList = NULL;
 
 Token* newToken(char* lex, Category cat, int row, int col) {
 
-    Token* new_token = (Token*) malloc(sizeof(Token) +20);
+    Token* new_token = (Token*) malloc(sizeof(Token));
 
     new_token->lexeme = lex;
     new_token->category = cat;

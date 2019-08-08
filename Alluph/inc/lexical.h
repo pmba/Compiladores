@@ -242,7 +242,7 @@ Boolean analyseLine() {
 
         int buffer_index = 0;
 
-        char buffer[31];
+        char buffer[33];
 
         for (_column = 0; _column <= strlen(line); ++_column) {
 

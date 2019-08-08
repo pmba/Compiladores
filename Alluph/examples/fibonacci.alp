@@ -1,4 +1,4 @@
-function int _fibonacci(int target) do
+function void _fibonacci(int target) do
 
     int a;
     int b;
@@ -6,21 +6,24 @@ function int _fibonacci(int target) do
 
     a = 1;
     b = 1;
+
+    if target == 0 do 
+        return;
+    end
     
     while next <= target do
 
-        next = a + b;
-        a = b;
-        
         print(a ++ ", ");
         
+        next = a + b;
+        a = b;        
         b = next;
 
     end
 
     print(a);
     
-    return 1;
+    return;
 end
 
 function int _main() do
