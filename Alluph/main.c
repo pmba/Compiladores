@@ -20,6 +20,7 @@ Universidade Federal de Alagoas
 Ciencia da Computacao
 
 *****************************/
+
 Token* nextToken() {
 
     if (TokenList == NULL) {
