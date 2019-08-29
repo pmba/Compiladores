@@ -242,8 +242,7 @@ Token* recognizeSpecialChar(char ch, char next_ch, int col) {
             break;
     }
 }
-
-ListNode* analyseLine(ListNode* TokenList) {
+Boolean analyseLine() {
 
     char* line = readLine();
 
@@ -316,9 +315,6 @@ ListNode* analyseLine(ListNode* TokenList) {
                 }
             } 
 
-        } 
-    } 
-
-    return TokenList;
-
+        } return True;
+    } else return False;
 }

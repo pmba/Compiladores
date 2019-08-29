@@ -19,13 +19,11 @@ Ciencia da Computacao
 
 *****************************/
 
-Token* nextToken(ListNode* TokenList) {
+Token* nextToken() {
 
     if (TokenList == NULL) {
 
-        TokenList = analyseLine(TokenList);
-        
-        if(TokenList == NULL) {
+        if(!analyseLine()) {
             return newToken("EOF", catEOF, current_line, _column+1);
         }
     }
@@ -61,11 +59,11 @@ int main(int argc, char const *argv[]) {
 
     ListNode* TokenList = NULL;
 
-    Token* current_token = nextToken(TokenList);
+    Token* current_token = nextToken();
     printToken(current_token);
 
     while(current_token->category != catEOF) {
-        current_token = nextToken(TokenList);
+        current_token = nextToken();
         printToken(current_token);
     }
 
