@@ -234,75 +234,82 @@ Token* recognizeSpecialChar(char ch, char next_ch, int col) {
     }
 }
 
-List* analyseLine(char* line, List* list) {
-    
-    int buffer_index = 0;
+ListNode* analyseLine(ListNode* TokenList) {
 
-    char buffer[31];
+    char* line = readLine();
 
-    for (_column = 0; _column <= strlen(line); ++_column) {
+    if (line != NULL) {
 
-        if (isalnum(line[_column]) || line[_column] == '_') {
-            buffer[buffer_index++] = line[_column];
-        }
+        int buffer_index = 0;
 
-        if (isAnalisysSpecialChar(line[_column])) {
+        char buffer[33];
 
-            if (buffer_index != 0) {
+        for (_column = 0; _column <= strlen(line); ++_column) {
 
-                char analisys_special_char = line[_column];
-                buffer[buffer_index] = '\0';
-                buffer_index = 0;
-
-                _DEBUG printf("\t[Info] Lexeme found: \"%s\"\n", buffer);
-                Token* recognized_word = recognizeWord(buffer, _column);
-                
-                if(recognized_word->category != _unrecognized) {
-                    list = pushList(list, recognized_word);
-                }
-            
+            if (isalnum(line[_column]) || line[_column] == '_') {
+                buffer[buffer_index++] = line[_column];
             }
 
-            if (line[_column] == '"' || line[_column] == '\'') {
-                int j;
-                Boolean _closed_cte = False;
+            if (isAnalisysSpecialChar(line[_column])) {
 
-                for (j = _column + 1; line[j] != '\0'; ++j) {
+                if (buffer_index != 0) {
 
-                    if (line[j] == line[_column]) {
-                        _closed_cte = True;
-                        break;
+                    char analisys_special_char = line[_column];
+                    buffer[buffer_index] = '\0';
+                    buffer_index = 0;
+
+                    _DEBUG printf("\t[Info] Lexeme found: \"%s\"\n", buffer);
+                    Token* recognized_word = recognizeWord(buffer, _column);
+                    
+                    if(recognized_word->category != _unrecognized) {
+                        TokenList = pushList(TokenList, recognized_word);
+                    }
+                
+                }
+
+                if (line[_column] == '"' || line[_column] == '\'') {
+                    int j;
+                    Boolean _closed_cte = False;
+
+                    for (j = _column + 1; line[j] != '\0'; ++j) {
+
+                        if (line[j] == line[_column]) {
+                            _closed_cte = True;
+                            break;
+                        }
+                    }
+
+                    int _cte_length = _closed_cte ? j-(_column) : 0;
+
+                    if (_cte_length > 0) {
+                        char _cte_lex[_cte_length+2];
+
+                        for (j = _column; j <= _cte_length + _column; ++j) {
+                            _cte_lex[j-_column] = line[j];
+                        }
+
+                        _cte_lex[j-_column] = '\0';
+                        Token* recognized_cte = newStrChToken(_cte_lex, current_line, _column);
+                    
+                        TokenList = pushList(TokenList, recognized_cte);
+                        _column += _cte_length;
+                        continue;
                     }
                 }
 
-                int _cte_length = _closed_cte ? j-(_column) : 0;
+                Token* recognized_char = recognizeSpecialChar(line[_column], line[_column+1], _column);
 
-                if (_cte_length > 0) {
-                    char _cte_lex[_cte_length+2];
+                if (recognized_char != NULL) {
 
-                    for (j = _column; j <= _cte_length + _column; ++j) {
-                        _cte_lex[j-_column] = line[j];
-                    }
-
-                    _cte_lex[j-_column] = '\0';
-                    Token* recognized_cte = newStrChToken(_cte_lex, current_line, _column);
+                    _DEBUG printf("\t[Info] Lexeme found: \"%s\", Category \"%s\"\n", recognized_char->lexeme, categoryToString[recognized_char->category]);
+                    TokenList = pushList(TokenList, recognized_char);
                 
-                    list = pushList(list, recognized_cte);
-                    _column += _cte_length;
-                    continue;
                 }
-            }
+            } 
 
-            Token* recognized_char = recognizeSpecialChar(line[_column], line[_column+1], _column);
-
-            if (recognized_char != NULL) {
-
-                _DEBUG printf("\t[Info] Lexeme found: \"%s\", Category \"%s\"\n", recognized_char->lexeme, categoryToString[recognized_char->category]);
-                list = pushList(list, recognized_char);
-            
-            }
         } 
-    }
+    } 
 
-    return list;
+    return TokenList;
+
 }

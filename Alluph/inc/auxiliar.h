@@ -149,20 +149,26 @@ typedef struct token {
     char* lexeme;
     Category category;
     int row, col;
-
-    struct token* next;
     
 } Token;
 
+typedef struct list_node {
+    Token* token;
+    struct list_node* next;
+
+} ListNode;
+
+
+// FUNCTIONS
+
 Token* newToken(char* lex, Category cat, int row, int col) {
 
-    Token* new_token = (Token*) malloc(sizeof(Token) +20);
+    Token* new_token = (Token*) malloc(sizeof(Token));
 
     new_token->lexeme = lex;
     new_token->category = cat;
     new_token->row = row;
     new_token->col = col;
-    new_token->next = NULL;
     
     return new_token;
 }
@@ -190,23 +196,6 @@ void printToken(Token* token) {
     printf("          [%04d, %04d] (%04d, %20s) {%s}\n", token->row, token->col, token->category, categoryToString[token->category], token->lexeme);
 }
 
-void _LINEREADSHOW(char* line) {
-
-    _LINEREADPRINT {
-
-        int i, j;
-
-        for (i = 0; line[i] != '\0'; ++i) {
-            if (line[i] != ' ') break;
-        }
-
-        printf("\n        Line Read: '");
-
-        for (j = i; line[j] != '\0'; ++j) {
-
-            printf("%c", line[j]);
-        }
-
-        printf("'\n");
-    }
+void printLine(char* line, int line_number) {
+    printf("%04d  \"%s\"\n", line_number, line);
 }

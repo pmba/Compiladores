@@ -3,12 +3,12 @@
 #include <string.h>
 #include <regex.h>
 #include <ctype.h>
-#include "./libs/auxiliar.h"
-#include "./libs/list.h"
-#include "./libs/stack.h"
-#include "./libs/file.h"
-#include "./libs/syntactic.h"
-#include "./libs/lexical.h"
+#include "./inc/auxiliar.h"
+#include "./inc/list.h"
+#include "./inc/stack.h"
+#include "./inc/file.h"
+#include "./inc/syntactic.h"
+#include "./inc/lexical.h"
 
 
 /****************************
@@ -20,6 +20,32 @@ Universidade Federal de Alagoas
 Ciencia da Computacao
 
 *****************************/
+
+Token* nextToken(ListNode* TokenList) {
+
+    if (TokenList == NULL) {
+
+        TokenList = analyseLine(TokenList);
+        
+        if(TokenList == NULL) {
+            return newToken("EOF", catEOF, current_line, _column+1);
+        }
+    }
+
+    if (TokenList->next == NULL){
+        Token* aux = TokenList->token;
+        TokenList = NULL;
+
+        return aux;
+    } 
+     
+    else {
+        Token* aux = TokenList->token;
+        TokenList = TokenList->next;
+
+        return aux;
+    }
+}
 
 int main(int argc, char const *argv[]) {
 
@@ -34,41 +60,17 @@ int main(int argc, char const *argv[]) {
     if (!file_opened) exit(EXIT_FAILURE); 
     if (!initializeLexicalAnalyzer()) exit(EXIT_FAILURE);
 
-    printf("\n          [Row ,  Col] (Cat , %20s) {%s}\n\n", "Category", "Lexeme");
 
-/*     List* myList = newList();
-    Token* tk;
-    
-    char* line_read = readLine();
+    ListNode* TokenList = NULL;
 
-    while (line_read != NULL) {
+    Token* current_token = nextToken(TokenList);
+    printToken(current_token);
 
-        myList = analyseLine(line_read, myList);
-
-        while((tk = popToken(myList)) != NULL) {
-            printToken(tk);
-        }       
-       
-       line_read = readLine();
+    while(current_token->category != catEOF) {
+        current_token = nextToken(TokenList);
+        printToken(current_token);
     }
 
-    myList = pushList(myList, newToken("EOF", catEOF, current_line, _column+1));
-    printToken(popToken(myList));
- */
-
-
-    List* listTest = newList();
-    listTest = pushList(listTest, newToken("Teste1", catId, 0, 0));
-    listTest = pushList(listTest, newToken("Teste2", catId, 0, 0));
-    listTest = pushList(listTest, newToken("Teste3", catId, 0, 0));
-    listTest = pushList(listTest, newToken("Teste4", catId, 0, 0));
-    printList(listTest);
-    printf("\n\n");
-    printToken(popToken(listTest));
-    printToken(popToken(listTest));
-    printToken(popToken(listTest));
-    printToken(popToken(listTest));
-    printToken(popToken(listTest));
     closeFile();
 
     return 0;
