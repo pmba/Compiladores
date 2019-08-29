@@ -12,6 +12,6 @@ Boolean initializeLexicalAnalyzer();
 Boolean isAnalisysSpecialChar(char ch);
 Token* recognizeWord(char* word, int col);
 Token* recognizeSpecialChar(char ch, char next_ch, int col);
-Boolean analyseLine();
+ListNode* analyseLine();
 
 #endif // LEXICAL_H
