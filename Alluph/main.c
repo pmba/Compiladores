@@ -19,11 +19,13 @@ Ciencia da Computacao
 
 *****************************/
 
-Token* nextToken() {
+Token* nextToken(ListNode* TokenList) {
 
     if (TokenList == NULL) {
 
-        if(!analyseLine()) {
+        TokenList = analyseLine(TokenList);
+        
+        if(TokenList == NULL) {
             return newToken("EOF", catEOF, current_line, _column+1);
         }
     }
@@ -56,11 +58,14 @@ int main(int argc, char const *argv[]) {
     if (!file_opened) exit(EXIT_FAILURE); 
     if (!initializeLexicalAnalyzer()) exit(EXIT_FAILURE);
 
-    Token* current_token = nextToken();
+
+    ListNode* TokenList = NULL;
+
+    Token* current_token = nextToken(TokenList);
     printToken(current_token);
 
     while(current_token->category != catEOF) {
-        current_token = nextToken();
+        current_token = nextToken(TokenList);
         printToken(current_token);
     }
 
