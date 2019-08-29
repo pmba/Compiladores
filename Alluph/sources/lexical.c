@@ -1,3 +1,15 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <regex.h>
+#include <ctype.h>
+#include <regex.h>
+
+#include "../includes/auxiliar.h"
+#include "../includes/file.h"
+#include "../includes/list.h"
+#include "../includes/lexical.h"
+
 /****************************
 
 ALLUPH - Analisador Lexico e Sintatico
@@ -7,13 +19,9 @@ Universidade Federal de Alagoas
 Ciencia da Computacao
 
 *****************************/
-#define RegularExpressionsQuant 48
-
-int _column;
 
 regex_t regular_exp[RegularExpressionsQuant] = {0};
 
-// DO NOT CHANGE DE ORDER
 const char regular_exp_pattern[][90] = {
 
     "^function$",
@@ -66,6 +74,7 @@ const char regular_exp_pattern[][90] = {
     "^\'[ a-zA-Z0-9.,:;\\?!\\+\\-\\*/\\_@&%\\$<>=(){}[]|]\'$"
 
 };
+
 
 Boolean initializeLexicalAnalyzer() {
 

@@ -1,3 +1,19 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "../includes/auxiliar.h"
+#include "../includes/list.h"
+
+/****************************
+
+ALLUPH - Analisador Lexico e Sintatico
+Phyllipe Matheus Bezerra Alves
+Lucas Agra de Omena
+Universidade Federal de Alagoas
+Ciencia da Computacao
+
+*****************************/
+
 ListNode* newListNode(Token* token) {
 
     ListNode* new_list_node = malloc(sizeof(ListNode));

@@ -1,3 +1,10 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+#include "../includes/auxiliar.h"
+#include "../includes/file.h"
+
 /****************************
 
 ALLUPH - Analisador Lexico e Sintatico
@@ -8,7 +15,6 @@ Ciencia da Computacao
 
 *****************************/
 
-FILE* file;
 int current_line = 0;
 
 Boolean openFile(const char* path) {

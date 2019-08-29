@@ -1,14 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include <regex.h>
-#include <ctype.h>
-#include "./inc/auxiliar.h"
-#include "./inc/list.h"
-#include "./inc/stack.h"
-#include "./inc/file.h"
-#include "./inc/syntactic.h"
-#include "./inc/lexical.h"
+
+#include "./includes/auxiliar.h"
+#include "./includes/list.h"
+#include "./includes/stack.h"
+#include "./includes/file.h"
+#include "./includes/syntactic.h"
+#include "./includes/lexical.h"
 
 
 /****************************

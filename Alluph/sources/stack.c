@@ -1,3 +1,9 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "../includes/auxiliar.h"
+#include "../includes/stack.h"
+
 /****************************
 
 ALLUPH - Analisador Lexico e Sintatico
@@ -7,22 +13,6 @@ Universidade Federal de Alagoas
 Ciencia da Computacao
 
 *****************************/
-
-/* generic category used to join non-terminals and terminals category at stack */
-
-typedef enum generic_cat { EmptyStack = -1 } GenericCategory; 
-
-typedef struct node {
-
-    GenericCategory value;
-    struct node* next;
-} Node;
-
-typedef struct stack {
-
-    Node* top;
-    int size;
-} Stack;
 
 /*
 

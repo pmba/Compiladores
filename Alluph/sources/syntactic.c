@@ -1,3 +1,8 @@
+#include <stdio.h>
+
+#include "../includes/auxiliar.h"
+#include "../includes/syntactic.h"
+
 /****************************
 
 ALLUPH - Analisador Lexico e Sintatico
@@ -7,12 +12,6 @@ Universidade Federal de Alagoas
 Ciencia da Computacao
 
 *****************************/
-
-#define POP -1
-
-// TODO: ERROR RECOVERING
-#define ERROR -2
-
 
 int preditive_table[NonTerminalQuant][TerminalsQuant] = {
     
