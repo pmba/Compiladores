@@ -1,71 +1,11 @@
+// pede dois numeros x e y e retorna a respectiva producao
+// x = categoria do token de entrada
+// y = categoria do terminal na pilha
+
 #include <stdio.h>
 
-#include "../includes/auxiliar.h"
-#include "../includes/syntactic.h"
+int preditive_table[41][50] = {
 
-/****************************
-
-ALLUPH - Analisador Lexico e Sintatico
-Phyllipe Matheus Bezerra Alves
-Lucas Agra de Omena
-Universidade Federal de Alagoas
-Ciencia da Computacao
-
-*****************************/
-
-int preditive_table[NonTerminalQuant][TerminalsQuant] = {
-    /* [
-    "'function'",
-    "'do'",
-    "'end'",
-    "'funId'",
-    "'main'",
-    "'int'",
-    "'float'",
-    "'string'",
-    "'bool'",
-    "'char'",
-    "'void'",
-    "'('",
-    "')'",
-    "','",
-    "'id'",
-    "'if'",
-    "'while'",
-    "'from'",
-    "'to'",
-    "'else'",
-    "'doing'",
-    "';'",
-    "'['",
-    "']'",
-    "'='",
-    "'print'",
-    "'read'",
-    "'return'",
-    "'++'",
-    "'or'",
-    "'and'",
-    "'!'",
-    "'=='",
-    "'!='",
-    "'CteBool'",
-    "'>'",
-    "'>='",
-    "'<'",
-    "'<='",
-    "'CteInt'",
-    "'CteFloat'",
-    "'CteString'",
-    "'CteChar'",
-    "'+'",
-    "'-'",
-    "'*'",
-    "'/'",
-    "'%'",
-    "$"
-]
-*/
     {1,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-1},
     {2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,3},
     {-2,-2,-2,4,5,-2,-2,-2,-2,-2,-2,-1,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2},
@@ -108,3 +48,15 @@ int preditive_table[NonTerminalQuant][TerminalsQuant] = {
     {-2,-2,-2,-1,-2,-2,-2,-2,-2,-2,-2,-1,-2,-2,-1,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-1,-1,-1,-1,81,82,-2,-2,-2,-2},
     {-2,-2,-2,-1,-2,-2,-2,-2,-2,-2,-2,-1,-2,-2,-1,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-1,-1,-1,-1,-2,-2,83,84,85,-2}
 };
+
+int main() {
+
+    int x, y;
+
+    while(1) {
+        scanf("%d %d", &x, &y);
+        printf("%d\n\n", preditive_table[y][x]);
+    }
+
+    return 0;
+}

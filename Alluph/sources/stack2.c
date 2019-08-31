@@ -11,8 +11,7 @@ Ciencia da Computacao
 typedef struct node {
 
     Boolean terminal;
-    NonTerminal non_term;
-    Category terminal;
+    int catNum;
     struct node* next;
 } Node;
 
@@ -23,21 +22,13 @@ typedef struct stack {
 } Stack;
 
 
-Node* createNode(Boolean isTerminal, int catNum) {
+Node* createNode(bool isTerminal, int catNum) {
 
     Node* newNode = malloc(sizeof(Node));
 
     newNode->terminal = isTerminal;
-
-    newNode->non_term = NULL;
-    newNode->terminal = NULL;
-
-    if(isTerminal) {
-        newNode->terminal = catNum;
-    } else {
-        newNode->non_term = catNum;
-    }
-
+    newNode->catNum = catNum;
+ 
     newNode->next = NULL;
 
     return newNode;

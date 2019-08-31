@@ -15,70 +15,103 @@ typedef enum boolean {
 
 typedef enum non_term {
 
-    S, 
-    DefFunList, FunId, VarType, FunType, OpClPar, Par,
-    ParAux, SentList, SentListAux, Sent, Else, Doing, Decl,
-    Id, VecType, Atr, Print, Read, FunCall, Return, Exp,
-    ExpRec, BoolExp, BoolExpRec, BoolTerm, BoolTermRec, 
-    BoolFac, EqExp, EqExpAux, EqOpe, RelExp, RelExpRec, 
-    RelOpe, ArExp, ArExpRec, ArTerm, ArTermRec,ArFac, 
-    ArOpe, MultOpe
+    S,          // 0
+    DefFunList, // 1
+    FunId,      // 2
+    VarType,    // 3
+    FunType,    // 4
+    OpClPar,    // 5
+    Par,        // 6
+    ParAux,     // 7
+    SentList,   // 8
+    SentListAux,// 9
+    Sent,       // 10
+    Else,       // 11
+    Doing,      // 12
+    Decl,       // 13
+    Id,         // 14
+    VecType,    // 15
+    Atr,        // 16
+    Print,      // 17
+    Read,       // 18
+    FunCall,    // 19
+    Return,     // 20
+    Exp,        // 21
+    ExpRec,     // 22
+    BoolExp,    // 23
+    BoolExpRec, // 24
+    BoolTerm,   // 25
+    BoolTermRec,// 26
+    BoolFac,    // 27
+    EqExp,      // 28
+    EqExpAux,   // 29
+    EqOpe,      // 30
+    RelExp,     // 31 
+    RelExpRec,  // 32
+    RelOpe,     // 33
+    ArExp,      // 34
+    ArExpRec,   // 35
+    ArTerm,     // 36
+    ArTermRec,  // 37
+    ArFac,      // 38
+    ArOpe,      // 39
+    MultOpe     // 40
 
 } NonTerminal;
 
 // DO NOT CHANGE DE ORDER
 typedef enum category {
 
-    catFunction, 
-    catDo, 
-    catEnd, 
-    catMain, 
-    catInt,
-    catFloat, 
-    catString, 
-    catBool, 
-    catChar, 
-    catVoid, 
-    catOpPar,
-    catClsPar, 
-    catComma, 
-    catIf, 
-    catWhile, 
-    catFrom, 
-    catTo, 
-    catElse, 
-    catDoing, 
-    catSemiCol, 
-    catOpBrac, 
-    catClsBrac, 
-    catPrint, 
-    catRead,
-    carReturn, 
-    catOpeConc,
-    catOpeOr,
-    catOpeAnd, 
-    catOpeNeg, 
-    catOpeAtr, 
-    catOpeEq, 
-    catOpeDif, 
-    catCteBool, 
-    catOpeGt, 
-    catOpeGte, 
-    catOpeLt, 
-    catOpeLte, 
-    catOpeSum, 
-    catOpeSub, 
-    catOpeMult, 
-    catOpeDiv, 
-    catOpeMod, 
-    catFunId, 
-    catId, 
-    catCteInt, 
-    catCteFloat, 
-    catCteStr, 
-    catCteChar, 
-    catEOF,
-    _unrecognized
+    catFunction,// 0
+    catDo,      // 1
+    catEnd,     // 2
+    catFunId,   // 3
+    catMain,    // 4
+    catInt,     // 5
+    catFloat,   // 6
+    catString,  // 7
+    catBool,    // 8
+    catChar,    // 9
+    catVoid,    // 10
+    catOpPar,   // 11
+    catClsPar,  // 12
+    catComma,   // 13
+    catId,      // 14
+    catIf,      // 15
+    catWhile,   // 16
+    catFrom,    // 17
+    catTo,      // 18
+    catElse,    // 19
+    catDoing,   // 20
+    catSemiCol, // 21
+    catOpBrac,  // 22
+    catClsBrac, // 23
+    catOpeAtr,  // 24
+    catPrint,   // 25
+    catRead,    // 26
+    carReturn,  // 27
+    catOpeConc, // 28
+    catOpeOr,   // 29
+    catOpeAnd,  // 30
+    catOpeNeg,  // 31
+    catOpeEq,   // 32
+    catOpeDif,  // 33
+    catCteBool, // 34
+    catOpeGt,   // 35
+    catOpeGte,  // 36
+    catOpeLt,   // 37
+    catOpeLte,  // 38
+    catCteInt,  // 39
+    catCteFloat,// 40
+    catCteStr,  // 41
+    catCteChar, // 42
+    catOpeSum,  // 43
+    catOpeSub,  // 44
+    catOpeMult, // 45
+    catOpeDiv,  // 46
+    catOpeMod,  // 47
+    catEOF,     // 48
+    _unrecognized // 49
 
 } Category;
 
