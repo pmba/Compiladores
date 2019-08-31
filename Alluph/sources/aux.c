@@ -49,13 +49,30 @@ int preditive_table[41][50] = {
     {-2,-2,-2,-1,-2,-2,-2,-2,-2,-2,-2,-1,-2,-2,-1,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-1,-1,-1,-1,-2,-2,83,84,85,-2}
 };
 
+typedef struct wow 
+{ 
+    int value; 
+    char letter;
+} Wow;
+
 int main() {
 
-    int x, y;
+    // int x, y;
 
-    while(1) {
-        scanf("%d %d", &x, &y);
-        printf("%d\n\n", preditive_table[y][x]);
+    // while(1) {
+    //     scanf("%d %d", &x, &y);
+    //     printf("%d\n\n", preditive_table[y][x]);
+    // }
+
+    Wow arr[2] = {
+        { 2, 'a' },
+        { 3, 'b' }
+    };
+
+    int i;
+
+    for (i = 0; i < 2; ++i) {
+        printf("%d %c\n", arr[i].value, arr[i].letter);
     }
 
     return 0;

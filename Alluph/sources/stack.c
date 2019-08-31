@@ -14,70 +14,43 @@ Ciencia da Computacao
 
 *****************************/
 
-/*
 
-    createNode: (GenericCategory, next) -> Node*
+GenericToken* createGenericToken(Boolean isTerminal, int catNum) {
 
-    Create a new node wich contains a value and a next, if the node needs to be the head node,
-    just pass NULL on 'next' parameter.
+    GenericToken* newGenericToken = malloc(sizeof(GenericToken));
+
+    newGenericToken->terminal = isTerminal;
+    newGenericToken->catNum = catNum;
  
- */
-Node* createNode(GenericCategory value, Node* next) {
+    newGenericToken->next = NULL;
 
-    Node* newNode = malloc(sizeof(Node*));
-
-    newNode->value = value;
-    newNode->next = next;
-
-    return newNode;
+    return newGenericToken;
 }
-
-/*
-
-    isEmpty: (Stack*) -> Boolean
-
-    return True if the stack has a size of 0 otherwise return False
-
-*/
 
 Boolean isEmpty(Stack* stack) {
 
     return stack->size == 0 ? True : False;
 }
 
-/*
 
-    peek: (Stack*) -> GenericCategory
-
-    return the stack->top->value if stack is not NULL, otherwise return EmptyStack
-
-*/
-
-GenericCategory peek(Stack* stack) {
+GenericToken* peek(Stack* stack) {
 
     if (stack != NULL) {
 
-        return stack->top->value;
+        return stack->top;
     } else {
-
-        return EmptyStack;
+        printf("Peeking null stack\n");
+        return NULL;
     }
 }
 
-/*
 
-    push: (Stack*, GenericCategory) -> Boolean
-
-    push a new node to the top of the given stack if the stack is not null, otherwise
-    return false
-
-*/
-
-Boolean push(Stack* stack, GenericCategory value) {
+Boolean push(Stack* stack, Boolean isTerminal, int catNum) {
 
     if (stack != NULL) {
 
-        Node* newTop = createNode(value, stack->top);
+        GenericToken* newTop = createGenericToken(isTerminal, catNum);
+        newTop->next = stack->top;
         stack->top = newTop;
         ++stack->size;
 
@@ -88,74 +61,52 @@ Boolean push(Stack* stack, GenericCategory value) {
     }
 }
 
-/*
 
-    pop: (Stack*) -> GenericCategory
-
-    return the stack->top->value, and remove it, if stack is not NULL and stack size is greater 
-    than 0, otherwise return EmptyStack
-
-*/
-
-GenericCategory pop(Stack* stack) {
+GenericToken* pop(Stack* stack) {
 
     if (stack->size > 0 && stack != NULL) {
 
-        Node* popped = stack->top;
+        GenericToken* popped = stack->top;
         stack->top = stack->top->next;
-
-        GenericCategory popped_value = popped->value;
-        free(popped);
 
         --stack->size;
 
-        return popped_value;
+        return popped;
     } else {
 
-        return EmptyStack;
+        return NULL;
     }
 }
 
-/*
 
-    clearStack: (Stack*) -> int
-
-    pop all elements from the given stack and return how many elements has been removed, including
-    the default node (EmptyStack)
-
-*/
 
 int clearStack(Stack* stack) {
 
     int popped_count = 0;
 
-    while (pop(stack) != EmptyStack) {
+    GenericToken* aux;
+
+    while ((aux = pop(stack)) != NULL) {
+        free(aux);
         ++popped_count;
     }
 
     if (stack != NULL) {
 
-        // force stack to remove the last node
+        // force stack to remove the last GenericToken
         ++stack->size;
-        pop(stack);
+        aux = pop(stack);
+        free(aux);
         ++popped_count;
     }
 
     return popped_count;
 }
 
-/*
-
-    createStack: () -> Stack*
-
-    create a new empty stack, with a default top (EmptyStack) and return it
-
-*/
-
 Stack* createStack() {
 
-    Stack* newStack = malloc(sizeof(Stack*));
-    newStack->top = createNode(EmptyStack, NULL);
+    Stack* newStack = malloc(sizeof(Stack));
+    newStack->top = NULL;
     newStack->size = 0;
     
     return newStack; 

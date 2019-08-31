@@ -3,25 +3,24 @@
 
 /* generic category used to join non-terminals and terminals category at stack */
 
-typedef enum generic_cat { EmptyStack = -1 } GenericCategory; 
+typedef struct gen_tk {
 
-typedef struct node {
-
-    GenericCategory value;
-    struct node* next;
-} Node;
+    Boolean terminal;
+    int catNum;
+    struct gen_tk* next;
+} GenericToken;
 
 typedef struct stack {
 
-    Node* top;
+    GenericToken* top;
     int size;
 } Stack;
 
-Node* createNode(GenericCategory value, Node* next);
+GenericToken* createGenericToken(Boolean isTerminal, int catNum);
 Boolean isEmpty(Stack* stack);
-GenericCategory peek(Stack* stack);
-Boolean push(Stack* stack, GenericCategory value);
-GenericCategory pop(Stack* stack);
+GenericToken* peek(Stack* stack);
+Boolean push(Stack* stack, Boolean isTerminal, int catNum);
+GenericToken* pop(Stack* stack);
 int clearStack(Stack* stack);
 Stack* createStack();
 
