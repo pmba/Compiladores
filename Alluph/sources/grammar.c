@@ -365,13 +365,13 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 37:
         push( // ']'
-            stack, createGenericToken(True, catClsPar)
+            stack, createGenericToken(True, catClsBrac)
         );
         push( // Exp
             stack, createGenericToken(False, Exp)
         );
         push( // '['
-            stack, createGenericToken(True, catOpPar)
+            stack, createGenericToken(True, catOpBrac)
         );    
 
         break;
@@ -463,9 +463,335 @@ Stack* stackProduction(Stack* stack, int production) {
         push( // BoolExp
             stack, createGenericToken(False, BoolExp)
         );
+
         break;
 
     case 45:
+        push( // ExpRec
+            stack, createGenericToken(False, ExpRec)
+        );
+        push( // BoolExp
+            stack, createGenericToken(False, BoolExp)
+        );
+        push( // '++'
+            stack, createGenericToken(True, catOpeConc)
+        );
+
+        break;
+
+    case 46:
+        break;
+
+    case 47:
+        push( // BoolExpRec
+            stack, createGenericToken(False, BoolExpRec)
+        );
+        push( // BoolTerm
+            stack, createGenericToken(False, BoolTerm)
+        );
+
+        break;
+
+    case 48:
+        push( // BoolExpRec
+            stack, createGenericToken(False, BoolExpRec)
+        );
+        push( // BoolTerm
+            stack, createGenericToken(False, BoolTerm)
+        );
+        push( // 'or'
+            stack, createGenericToken(True, catOpeOr)
+        );
+
+        break;
+
+    case 49:
+        break;
+
+    case 50:
+        push( // BoolTermRec
+            stack, createGenericToken(False, BoolTermRec)
+        );
+        push( // BoolFac
+            stack, createGenericToken(False, BoolFac)
+        );
+
+        break;
+
+    case 51:
+        push( // BoolTermRec
+            stack, createGenericToken(False, BoolTermRec)
+        );
+        push( // BoolFac
+            stack, createGenericToken(False, BoolFac)
+        );
+        push( // 'and'
+            stack, createGenericToken(True, catOpeAnd)
+        );
+
+        break;
+
+    case 52:
+        break;
+
+    case 53:
+        push( // EqExp
+            stack, createGenericToken(False, EqExp)
+        );
+        push( // '!'
+            stack, createGenericToken(True, catOpeNeg)
+        );
+        
+        break;
+
+    case 54:
+        push( // EqExp
+            stack, createGenericToken(False, EqExp)
+        );
+
+        break;
+
+    case 55:
+        push( // EqExpAux
+            stack, createGenericToken(False, EqExpAux)
+        );
+        push( // RelExp
+            stack, createGenericToken(False, RelExp)
+        );
+
+        break;
+
+    case 56:
+        push( // RelExp
+            stack, createGenericToken(False, RelExp)
+        );
+        push( // EqOpe
+            stack, createGenericToken(False, EqOpe)
+        );
+
+        break;
+
+    case 57:
+        break;
+
+    case 58:
+        push( // '=='
+            stack, createGenericToken(True, catOpeEq)
+        );
+
+        break;
+
+    case 59:
+        push( // '!='
+            stack, createGenericToken(True, catOpeDif)
+        );
+
+        break;
+
+    case 60:
+        push( // RelExpRec
+            stack, createGenericToken(False, RelExpRec)
+        );
+        push( // 'cteBool'
+            stack, createGenericToken(True, catCteBool)
+        );
+
+        break;
+
+    case 61:
+        push( // RelExpRec
+            stack, createGenericToken(False, RelExpRec)
+        );
+        push( // ArExp
+            stack, createGenericToken(False, ArExp)
+        );
+    
+        break;
+
+    case 62:
+        push( // RelExpRec
+            stack, createGenericToken(False, RelExpRec)
+        );
+        push( // RelExp
+            stack, createGenericToken(False, RelExp)
+        );
+        push( // RelOpe
+            stack, createGenericToken(False, RelOpe)
+        );
+    
+        break;
+
+    case 63:
+        break;
+
+    case 64:
+        push( // '>'
+            stack, createGenericToken(True, catOpeGt)
+        );
+
+        break;
+
+    case 65:
+        push( // '>='
+            stack, createGenericToken(True, catOpeGte)
+        );
+
+        break;
+
+    case 66:
+        push( // '<'
+            stack, createGenericToken(True, catOpeLt)
+        );
+
+        break;
+
+    case 67:
+        push( // '<='
+            stack, createGenericToken(True, catOpeLte)
+        );
+
+        break;
+
+    case 68:
+        push( // ArExpRec
+            stack, createGenericToken(False, ArExpRec)
+        );
+        push( // ArTerm
+            stack, createGenericToken(False, ArTerm)
+        );
+
+        break;
+
+    case 69:
+        push( // ArExpRec
+            stack, createGenericToken(False, ArExpRec)
+        );
+        push( // ArTerm
+            stack, createGenericToken(False, ArTerm)
+        );
+        push( // ArOpe
+            stack, createGenericToken(False, ArOpe)
+        );
+
+        break;
+
+    case 70:
+        break;
+
+    case 71:
+        push( // ArTermRec
+            stack, createGenericToken(False, ArTermRec)
+        );
+        push( // ArFac
+            stack, createGenericToken(False, ArFac)
+        );
+
+        break;
+
+    case 72:
+        push( // ArTermRec
+            stack, createGenericToken(False, ArTermRec)
+        );
+        push( // ArFac
+            stack, createGenericToken(False, ArFac)
+        );
+        push( // MultOpe
+            stack, createGenericToken(False, MultOpe)
+        );
+
+        break;
+
+    case 73:
+        break;
+
+    case 74:
+        push( // ')'
+            stack, createGenericToken(True, catClsPar)
+        );
+        push( // ArExp
+            stack, createGenericToken(False, ArExp)
+        );
+        push( // '('
+            stack, createGenericToken(True, catOpPar)
+        );
+
+        break;
+
+    case 75:
+        push( // Id
+            stack, createGenericToken(False, Id)
+        );
+
+        break;
+
+    case 76:
+        push( // FunCall
+            stack, createGenericToken(False, FunCall)
+        );
+
+        break;
+
+    case 77:
+        push( // 'CteInt'
+            stack, createGenericToken(True, catCteInt)
+        );
+
+        break;
+
+    case 78:
+        push( // 'CteFloat'
+            stack, createGenericToken(True, catCteFloat)
+        );
+
+        break;
+
+    case 79:
+        push( // 'CteString'
+            stack, createGenericToken(True, catCteStr)
+        );
+
+        break;
+
+    case 80:
+        push( // 'CteChar'
+            stack, createGenericToken(True, catCteChar)
+        );
+
+        break;
+
+    case 81:
+        push( // '+'
+            stack, createGenericToken(True, catOpeSum)
+        );
+
+        break;
+
+    case 82:
+        push( // '-'
+            stack, createGenericToken(True, catOpeSub)
+        );
+
+        break;
+
+    case 83:
+        push( // '*'
+            stack, createGenericToken(True, catOpeMult)
+        );
+
+        break;
+
+    case 84:
+        push( // '/'
+            stack, createGenericToken(True, catOpeDiv)
+        );
+
+        break;
+
+    case 85:
+        push( // '%'
+            stack, createGenericToken(True, catOpeMod)
+        );
+
         break;
 
     default:
