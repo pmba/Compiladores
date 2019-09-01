@@ -1,6 +1,6 @@
 function int _main() do
 
-    if 5 != 6 do
+    if 5 <= 6 do
         print(c ++ "kkkk kkkk");
     end
 
