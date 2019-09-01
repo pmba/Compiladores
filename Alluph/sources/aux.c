@@ -53,6 +53,7 @@ typedef struct wow
 { 
     int value; 
     char letter;
+    struct wow* next;
 } Wow;
 
 int main() {
@@ -64,15 +65,25 @@ int main() {
     //     printf("%d\n\n", preditive_table[y][x]);
     // }
 
-    Wow arr[2] = {
-        { 2, 'a' },
-        { 3, 'b' }
+    Wow* node = &(Wow) { 
+        .value = 1,
+        .letter = 'a',
+        .next = &(Wow) {
+            .value = 2,
+            .letter = 'b',
+            .next = &(Wow) {
+                .value = 3,
+                .letter = 'c',
+                .next = NULL
+            }
+        }
     };
 
     int i;
 
-    for (i = 0; i < 2; ++i) {
-        printf("%d %c\n", arr[i].value, arr[i].letter);
+    while  (node != NULL) {
+        printf("%d %c\n", node->value, node->letter);
+        node = node->next;
     }
 
     return 0;
