@@ -43,7 +43,7 @@ const char categoryToString[][14] = {
     "catOpeAtr", 
     "catPrint", 
     "catRead",
-    "carReturn", 
+    "catReturn", 
     "catOpeConc",
     "catOpeOr",
     "catOpeAnd", 

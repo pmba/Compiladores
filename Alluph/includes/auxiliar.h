@@ -89,7 +89,7 @@ typedef enum category {
     catOpeAtr,  // 24
     catPrint,   // 25
     catRead,    // 26
-    carReturn,  // 27
+    catReturn,  // 27
     catOpeConc, // 28
     catOpeOr,   // 29
     catOpeAnd,  // 30

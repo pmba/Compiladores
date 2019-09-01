@@ -452,7 +452,7 @@ void stackProduction(Stack* stack, int production) {
             stack, createGenericToken(False, Exp)
         );
         push( // 'return'
-            stack, createGenericToken(True, catReturn) // TODO: CRIAR CAT RETURN
+            stack, createGenericToken(True, catReturn)
         );
         break;
 
