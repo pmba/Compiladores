@@ -174,7 +174,12 @@ Token* recognizeSpecialChar(char ch, char next_ch, int col) {
             break;
 
         case '=':
-            return newToken("=", catOpeEq, current_line, col);
+            if (next_ch == '=') {
+                // == case and eat next_token
+                ++_column;
+                return newToken("==", catOpeEq, current_line, col);
+            } 
+            return newToken("=", catOpeAtr, current_line, col);
             break;
 
         case '"':
