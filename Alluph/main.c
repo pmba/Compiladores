@@ -94,8 +94,9 @@ int main(int argc, char const *argv[]) {
                 return 0;
             } 
 
-            printf("a\n");
             stack = stackProduction(stack, rule);
+
+            printf("Rule: %d\n", rule);
         }
     }
 

@@ -797,6 +797,9 @@ Stack* stackProduction(Stack* stack, int production) {
     default:
         break;
     }
+
+
+    return stack;
 }
 
 
