@@ -14,6 +14,14 @@ Ciencia da Computacao
 
 *****************************/
 
+Stack* createStack() {
+
+    Stack* newStack = malloc(sizeof(Stack));
+    newStack->top = NULL;
+    newStack->size = 0;
+    
+    return newStack; 
+}
 
 GenericToken* createGenericToken(Boolean isTerminal, int catNum) {
 
@@ -32,7 +40,6 @@ Boolean isEmpty(Stack* stack) {
     return stack->size == 0 ? True : False;
 }
 
-
 GenericToken* peek(Stack* stack) {
 
     if (stack != NULL) {
@@ -44,14 +51,12 @@ GenericToken* peek(Stack* stack) {
     }
 }
 
-
-Boolean push(Stack* stack, Boolean isTerminal, int catNum) {
+Boolean push(Stack* stack, GenericToken* gerToken) {
 
     if (stack != NULL) {
 
-        GenericToken* newTop = createGenericToken(isTerminal, catNum);
-        newTop->next = stack->top;
-        stack->top = newTop;
+        gerToken->next = stack->top;
+        stack->top = gerToken;
         ++stack->size;
 
         return True;
@@ -60,7 +65,6 @@ Boolean push(Stack* stack, Boolean isTerminal, int catNum) {
         return False;
     }
 }
-
 
 GenericToken* pop(Stack* stack) {
 
@@ -78,8 +82,6 @@ GenericToken* pop(Stack* stack) {
     }
 }
 
-
-
 int clearStack(Stack* stack) {
 
     int popped_count = 0;
@@ -91,23 +93,5 @@ int clearStack(Stack* stack) {
         ++popped_count;
     }
 
-    if (stack != NULL) {
-
-        // force stack to remove the last GenericToken
-        ++stack->size;
-        aux = pop(stack);
-        free(aux);
-        ++popped_count;
-    }
-
     return popped_count;
-}
-
-Stack* createStack() {
-
-    Stack* newStack = malloc(sizeof(Stack));
-    newStack->top = NULL;
-    newStack->size = 0;
-    
-    return newStack; 
 }

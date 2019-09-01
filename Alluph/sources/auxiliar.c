@@ -69,8 +69,6 @@ const char categoryToString[][14] = {
 
 };
 
-ListNode* TokenList = NULL;
-
 Token* newToken(char* lex, Category cat, int row, int col) {
 
     Token* new_token = (Token*) malloc(sizeof(Token));
