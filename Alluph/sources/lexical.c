@@ -22,6 +22,32 @@ Ciencia da Computacao
 
 regex_t regular_exp[RegularExpressionsQuant] = {0};
 
+const char keywords[][90] = {
+    "function",
+    "do",
+    "end",
+    "main",
+    "int",
+    "float",
+    "string",
+    "bool",
+    "char",
+    "void",
+    "if",
+    "while",
+    "from",
+    "to",
+    "else",
+    "doing",
+    "print",
+    "read",
+    "return",
+    "or",
+    "and",
+    "true",
+    "false"
+};
+
 const char regular_exp_pattern[][90] = {
 
     "^function$",
@@ -138,6 +164,18 @@ Token* recognizeWord(char* word, int col) {
             }
             aux[strlen(word)] = '\0';
 
+            //regex Id case
+            if(i == 14) {
+                //each keyword
+                Boolean flag = False;
+                for(int j = 0; j < 23; ++j) {
+                    if(strcmp(aux, keywords[j]) == 0) {
+                        flag = True;
+                        break;
+                    }
+                }
+                if(flag) continue;
+            }
             return newToken(aux, (Category)i, current_line, col);
         } 
     }

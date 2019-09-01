@@ -58,13 +58,13 @@ typedef struct wow
 
 int main() {
 
-    // int x, y;
+     int x, y;
 
-    // while(1) {
-    //     scanf("%d %d", &x, &y);
-    //     printf("%d\n\n", preditive_table[y][x]);
-    // }
-
+     while(1) {
+         scanf("%d %d", &x, &y);
+         printf("%d\n\n", preditive_table[y][x]);
+     }
+/*
     Wow* node = &(Wow) { 
         .value = 1,
         .letter = 'a',
@@ -85,6 +85,6 @@ int main() {
         printf("%d %c\n", node->value, node->letter);
         node = node->next;
     }
-
+*/
     return 0;
 }

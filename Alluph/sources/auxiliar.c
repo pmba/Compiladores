@@ -13,7 +13,51 @@ Universidade Federal de Alagoas
 Ciencia da Computacao
 
 *****************************/
+const char NonTerminalToString[][14] = {
 
+    "S", 
+    "DefFunList", 
+    "FunId", 
+    "VarType", 
+    "FunType", 
+    "OpClPar",
+    "Par", 
+    "ParAux", 
+    "SentList", 
+    "SentListAux", 
+    "Sent", 
+    "Else",
+    "Doing", 
+    "Decl", 
+    "Id", 
+    "VecType", 
+    "Atr", 
+    "Print", 
+    "Read", 
+    "FunCall", 
+    "Return", 
+    "ReturnRec", 
+    "Exp", 
+    "ExpRec", 
+    "BoolExp", 
+    "BoolExpRec", 
+    "BoolTerm", 
+    "BoolTermRec",
+    "BoolFac", 
+    "EqExp",
+    "EqExpAux",
+    "EqOpe", 
+    "RelExp", 
+    "RelExpRec", 
+    "RelOpe", 
+    "ArExp", 
+    "ArExpRec", 
+    "ArTerm", 
+    "ArTermRec", 
+    "ArFac", 
+    "ArOpe", 
+    "MultOpe"
+};
 const char categoryToString[][14] = {
 
     "catFunction", 

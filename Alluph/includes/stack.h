@@ -23,5 +23,6 @@ Boolean push(Stack* stack, GenericToken* gerToken);
 GenericToken* pop(Stack* stack);
 int clearStack(Stack* stack);
 Stack* createStack();
+void showStack(Stack* stack, int num);
 
 #endif // STACK_H

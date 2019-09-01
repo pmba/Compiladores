@@ -5,7 +5,7 @@
 #define _DEBUG if(False)
 #define _LINEREADPRINT if (True)
 
-#define NonTerminalQuant 41
+#define NonTerminalQuant 42
 #define TerminalsQuant 49
 
 typedef enum boolean {
@@ -36,26 +36,27 @@ typedef enum non_term {
     Read,       // 18
     FunCall,    // 19
     Return,     // 20
-    Exp,        // 21
-    ExpRec,     // 22
-    BoolExp,    // 23
-    BoolExpRec, // 24
-    BoolTerm,   // 25
-    BoolTermRec,// 26
-    BoolFac,    // 27
-    EqExp,      // 28
-    EqExpAux,   // 29
-    EqOpe,      // 30
-    RelExp,     // 31 
-    RelExpRec,  // 32
-    RelOpe,     // 33
-    ArExp,      // 34
-    ArExpRec,   // 35
-    ArTerm,     // 36
-    ArTermRec,  // 37
-    ArFac,      // 38
-    ArOpe,      // 39
-    MultOpe     // 40
+    ReturnRec,  // 21
+    Exp,        // 22
+    ExpRec,     // 23
+    BoolExp,    // 24
+    BoolExpRec, // 25
+    BoolTerm,   // 26
+    BoolTermRec,// 27
+    BoolFac,    // 28
+    EqExp,      // 29
+    EqExpAux,   // 30
+    EqOpe,      // 31
+    RelExp,     // 32 
+    RelExpRec,  // 33
+    RelOpe,     // 34
+    ArExp,      // 35
+    ArExpRec,   // 36
+    ArTerm,     // 37
+    ArTermRec,  // 38
+    ArFac,      // 39
+    ArOpe,      // 40
+    MultOpe     // 41
 
 } NonTerminal;
 
@@ -117,6 +118,7 @@ typedef enum category {
 
 // DO NOT CHANGE DE ORDER
 extern const char categoryToString[][14];
+extern const char NonTerminalToString[][14];
 
 typedef struct token {
 

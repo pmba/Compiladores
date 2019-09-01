@@ -95,3 +95,27 @@ int clearStack(Stack* stack) {
 
     return popped_count;
 }
+
+void showStack(Stack* stack, int num) {
+
+    GenericToken* aux = stack->top;
+
+    if(stack->size < num) num = stack->size;
+    printf("\nSTACK:\t");
+    for(int i = 1; i < num; i++) {
+        if(aux->isTerminal){
+            printf("%s, ", categoryToString[aux->catNum]);
+        } else {
+            printf("%s, ", NonTerminalToString[aux->catNum]);
+        }
+        aux = aux->next;
+    }
+    if(aux != NULL) {
+        if(aux->isTerminal){
+            printf("%s\n", categoryToString[aux->catNum]);
+        } else {
+            printf("%s\n", NonTerminalToString[aux->catNum]);
+        }
+    }
+
+}

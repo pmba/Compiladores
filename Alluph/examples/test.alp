@@ -15,7 +15,7 @@ function int _main() do
 
     result = _sum(a, b);
 
-    if result >= c do
+    if true do
         print(result);
     end
     else do
