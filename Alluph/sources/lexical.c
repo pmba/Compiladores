@@ -256,6 +256,11 @@ Token* recognizeSpecialChar(char ch, char next_ch, int col) {
             break;
 
         case '!':
+            if (next_ch == '=') {
+                // != case and eat next_token
+                ++_column;
+                return newToken("!=", catOpeDif, current_line, col);
+            }
             return newToken("!", catOpeNeg, current_line, col);
             break;
 
