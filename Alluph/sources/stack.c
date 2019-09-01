@@ -23,12 +23,12 @@ Stack* createStack() {
     return newStack; 
 }
 
-GenericToken* createGenericToken(Boolean isTerminal, int catNum) {
+GenericToken* createGenericToken(Boolean isterminal, int catnum) {
 
     GenericToken* newGenericToken = malloc(sizeof(GenericToken));
 
-    newGenericToken->terminal = isTerminal;
-    newGenericToken->catNum = catNum;
+    newGenericToken->isTerminal = isterminal;
+    newGenericToken->catNum = catnum;
  
     newGenericToken->next = NULL;
 

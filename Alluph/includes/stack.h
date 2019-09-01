@@ -5,7 +5,7 @@
 
 typedef struct gen_tk {
 
-    Boolean terminal;
+    Boolean isTerminal;
     int catNum;
     struct gen_tk* next;
 } GenericToken;
@@ -19,7 +19,7 @@ typedef struct stack {
 GenericToken* createGenericToken(Boolean isTerminal, int catNum);
 Boolean isEmpty(Stack* stack);
 GenericToken* peek(Stack* stack);
-Boolean push(Stack* stack, Boolean isTerminal, int catNum);
+Boolean push(Stack* stack, GenericToken* gerToken);
 GenericToken* pop(Stack* stack);
 int clearStack(Stack* stack);
 Stack* createStack();

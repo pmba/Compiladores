@@ -15,7 +15,7 @@ Ciencia da Computacao
 
 *****************************/
 
-void stackProduction(Stack* stack, int production) {
+Stack* stackProduction(Stack* stack, int production) {
 
     switch (production)
     {

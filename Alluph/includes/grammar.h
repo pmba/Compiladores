@@ -3,6 +3,6 @@
 
 #include "../includes/stack.h"
 
-void stackProduction(Stack* stack, int production);
+Stack* stackProduction(Stack* stack, int production);
 
 #endif // GRAMMAR_H
