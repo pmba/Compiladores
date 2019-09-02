@@ -11,11 +11,9 @@ function int _main() do
     
     a = 10;
     b = 20;
-    c = 40;
+    c = _sum(a, b);
 
-    result = _sum(a, b);
-
-    if true do
+    if !a>b do
         print(result);
     end
     else do

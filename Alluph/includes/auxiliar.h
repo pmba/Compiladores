@@ -85,9 +85,9 @@ typedef enum category {
     catWhile,   // 18
     catFrom,    // 19
     catTo,      // 20
-    catElse,    // 21
-    catDoing,   // 22
-    catSemiCol, // 23
+    catSemiCol, // 21
+    catElse,    // 22
+    catDoing,   // 23
     catOpeAtr,  // 24
     catPrint,   // 25
     catRead,    // 26

@@ -1,8 +1,7 @@
 function int _main() do
 
-    if 5 <= 6 do
-        print(c ++ "kkkk kkkk");
-    end
+    print(c ++ "kkkk kkkk");
+
 
     return 0;
 
