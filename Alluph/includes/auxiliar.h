@@ -120,6 +120,7 @@ typedef enum category {
 // DO NOT CHANGE DE ORDER
 extern const char categoryToString[][14];
 extern const char NonTerminalToString[][14];
+extern const char terminalToString[][14];
 
 typedef struct token {
 

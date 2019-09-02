@@ -1,8 +1,9 @@
 function int _main() do
 
-    print(c ++ "kkkk kkkk");
-
-
+    from i = 0 to size doing i = i+1 do
+        print(numbers[i]);
+    
+    end
     return 0;
 
 end

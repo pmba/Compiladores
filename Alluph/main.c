@@ -24,25 +24,23 @@ Token* current_token = NULL;
 
 ListNode* nextToken(ListNode* TokenList) {
    
-
     if (TokenList == NULL) {
 
         TokenList = analyseLine(TokenList);
 
         if (TokenList == NULL) {
             current_token = newToken("EOF", catEOF, current_line, _column+1);
-            printToken(current_token);
         } else {
             current_token = TokenList->token;
-            printToken(current_token);
             TokenList = TokenList->next;
         }
 
     } else {
         current_token = TokenList->token;
-        printToken(current_token);
         TokenList = TokenList->next;
     }
+        
+    printToken(current_token);
     return TokenList;
 }
 

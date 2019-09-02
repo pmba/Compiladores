@@ -3,3 +3,5 @@ test
 main
 .vscode
 ../.vscode
+sources/aux
+sources/aux.c

@@ -22,6 +22,7 @@ Stack* stackProduction(Stack* stack, int production) {
     case 1:
 
         printf("          %11s -> ", NonTerminalToString[S]);
+        printf("%s", NonTerminalToString[DefFunList]);
 
         push( // DefFunList
             stack, createGenericToken(False, DefFunList)
@@ -31,7 +32,15 @@ Stack* stackProduction(Stack* stack, int production) {
     
     case 2:
         printf("          %11s -> ", NonTerminalToString[DefFunList]);
-        
+        printf("%s", terminalToString[catFunction]);
+        printf("%s", NonTerminalToString[FunType]);
+        printf("%s", NonTerminalToString[FunId]);
+        printf("%s", NonTerminalToString[OpClPar]);
+        printf("%s", terminalToString[catDo]);
+        printf("%s", NonTerminalToString[SentList]);
+        printf("%s", terminalToString[catEnd]);
+        printf("%s", NonTerminalToString[DefFunList]);
+
         push( // DefFunList
             stack, createGenericToken(False, DefFunList)
         );
@@ -61,11 +70,11 @@ Stack* stackProduction(Stack* stack, int production) {
     
     case 3:
         printf("          %11s -> Epsilon", NonTerminalToString[DefFunList]);
-        
         break;
 
     case 4:
-        printf("          %11s -> ", NonTerminalToString[FunId]);        
+        printf("          %11s -> ", NonTerminalToString[FunId]);     
+        printf("%s", terminalToString[catFunId]);
 
         push( // 'funId'
             stack, createGenericToken(True, catFunId)
@@ -75,6 +84,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 5:
         printf("          %11s -> ", NonTerminalToString[FunId]);    
+        printf("%s", terminalToString[catMain]);
 
         push( // 'main'
             stack, createGenericToken(True, catMain)
@@ -84,6 +94,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 6:
         printf("          %11s -> ", NonTerminalToString[VarType]);  
+        printf("%s", terminalToString[catInt]);
 
         push( // 'int'
             stack, createGenericToken(True, catInt)
@@ -93,6 +104,8 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 7:
         printf("          %11s -> ", NonTerminalToString[VarType]);  
+        printf("%s", terminalToString[catFloat]);
+
         push( // 'Float'
             stack, createGenericToken(True, catFloat)
         );
@@ -100,7 +113,9 @@ Stack* stackProduction(Stack* stack, int production) {
         break;
 
     case 8:
-        printf("          %11s -> ", NonTerminalToString[VarType]);  
+        printf("          %11s -> ", NonTerminalToString[VarType]); 
+        printf("%s", terminalToString[catString]);
+
         push( // 'String'
             stack, createGenericToken(True, catString)
         );
@@ -108,7 +123,9 @@ Stack* stackProduction(Stack* stack, int production) {
         break;
 
     case 9:
-        printf("          %11s -> ", NonTerminalToString[VarType]);  
+        printf("          %11s -> ", NonTerminalToString[VarType]); 
+        printf("%s", terminalToString[catBool]);
+
         push( // 'Bool'
             stack, createGenericToken(True, catBool)
         );
@@ -117,6 +134,8 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 10:
         printf("          %11s -> ", NonTerminalToString[VarType]);  
+        printf("%s", terminalToString[catChar]);
+
         push( // 'Char'
             stack, createGenericToken(True, catChar)
         );
@@ -125,6 +144,8 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 11:
         printf("          %11s -> ", NonTerminalToString[FunType]);  
+        printf("%s", NonTerminalToString[VarType]);
+        printf("%s", NonTerminalToString[FunTypeAux]);
 
         push( // FunTypeAux
             stack, createGenericToken(False, FunTypeAux)
@@ -137,6 +158,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 12:
         printf("          %11s -> ", NonTerminalToString[FunType]);  
+        printf("%s", terminalToString[catVoid]);
 
         push( // 'void'
             stack, createGenericToken(True, catVoid)
@@ -146,6 +168,8 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 13:
         printf("          %11s -> ", NonTerminalToString[FunTypeAux]);  
+        printf("%s", terminalToString[catOpBrac]);
+        printf("%s", terminalToString[catClsBrac]);
 
         push( // ']'
             stack, createGenericToken(True, catClsBrac)
@@ -163,6 +187,9 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 15:
         printf("          %11s -> ", NonTerminalToString[OpClPar]);
+        printf("%s", terminalToString[catOpPar]);
+        printf("%s", NonTerminalToString[Par]);
+        printf("%s", terminalToString[catClsPar]);
           
         push( // ')'
             stack, createGenericToken(True, catClsPar)
@@ -177,7 +204,8 @@ Stack* stackProduction(Stack* stack, int production) {
         break;    
 
     case 16:
-        printf("          %11s -> ", NonTerminalToString[Par]);  
+        printf("          %11s -> ", NonTerminalToString[Par]); 
+        printf("%s", NonTerminalToString[ParAux]); 
 
         push( // ParAux
             stack, createGenericToken(False, ParAux)
@@ -187,6 +215,8 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 17:
         printf("          %11s -> ", NonTerminalToString[Par]);  
+        printf("%s", terminalToString[catComma]);
+        printf("%s", NonTerminalToString[ParAux]);
 
         push( // ParAux
             stack, createGenericToken(False, ParAux)
@@ -202,7 +232,11 @@ Stack* stackProduction(Stack* stack, int production) {
         break;
 
     case 19:
-        printf("          %11s -> ", NonTerminalToString[ParAux]);  
+        printf("          %11s -> ", NonTerminalToString[ParAux]); 
+        printf("%s", NonTerminalToString[VarType]);
+        printf("%s", terminalToString[catId]);
+        printf("%s", NonTerminalToString[FunTypeAux]);
+        printf("%s", NonTerminalToString[Par]); 
 
         push( // Par
             stack, createGenericToken(False, Par)
@@ -220,7 +254,9 @@ Stack* stackProduction(Stack* stack, int production) {
         break;
     
     case 20:
-        printf("          %11s -> ", NonTerminalToString[ParAux]);  
+        printf("          %11s -> ", NonTerminalToString[ParAux]); 
+        printf("%s", NonTerminalToString[Exp]);
+        printf("%s", NonTerminalToString[Par]); 
 
         push( // Par
             stack, createGenericToken(False, Par)
@@ -233,6 +269,8 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 21:
         printf("          %11s -> ", NonTerminalToString[SentList]);  
+        printf("%s", NonTerminalToString[Sent]);
+        printf("%s", NonTerminalToString[SentListAux]);
 
         push( // SentListAux
             stack, createGenericToken(False, SentListAux)
@@ -245,6 +283,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 22:
         printf("          %11s -> ", NonTerminalToString[SentListAux]);
+        printf("%s", NonTerminalToString[SentList]);
 
         push( // SentList
             stack, createGenericToken(False, SentList)
@@ -259,6 +298,12 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 24:
         printf("          %11s -> ", NonTerminalToString[Sent]);  
+        printf("%s", terminalToString[catIf]);
+        printf("%s", NonTerminalToString[BoolExp]);
+        printf("%s", terminalToString[catDo]);
+        printf("%s", NonTerminalToString[SentList]);
+        printf("%s", terminalToString[catEnd]);
+        printf("%s", NonTerminalToString[Else]);
 
         push( // Else
             stack, createGenericToken(False, Else)
@@ -283,6 +328,11 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 25:
         printf("          %11s -> ", NonTerminalToString[Sent]);  
+        printf("%s", terminalToString[catWhile]);
+        printf("%s", NonTerminalToString[BoolExp]);
+        printf("%s", terminalToString[catDo]);
+        printf("%s", NonTerminalToString[SentList]);
+        printf("%s", terminalToString[catEnd]);
 
         push( // 'end'
             stack, createGenericToken(True, catEnd)
@@ -304,6 +354,14 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 26:
         printf("          %11s -> ", NonTerminalToString[Sent]);  
+        printf("%s", terminalToString[catFrom]);
+        printf("%s", NonTerminalToString[Atr]);
+        printf("%s", terminalToString[catTo]);
+        printf("%s", NonTerminalToString[ArExp]);
+        printf("%s", NonTerminalToString[Doing]);
+        printf("%s", terminalToString[catDo]);
+        printf("%s", NonTerminalToString[SentList]);
+        printf("%s", terminalToString[catEnd]);
 
         push( // 'end'
             stack, createGenericToken(True, catEnd)
@@ -334,6 +392,8 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 27:
         printf("          %11s -> ", NonTerminalToString[Sent]);  
+        printf("%s", NonTerminalToString[Decl]);
+        printf("%s", terminalToString[catSemiCol]);
 
         push( // ';'
             stack, createGenericToken(True, catSemiCol)
@@ -346,6 +406,8 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 28:
         printf("          %11s -> ", NonTerminalToString[Sent]);  
+        printf("%s", NonTerminalToString[Atr]);
+        printf("%s", terminalToString[catSemiCol]);
 
         push( // ';'
             stack, createGenericToken(True, catSemiCol)
@@ -358,6 +420,8 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 29:
         printf("          %11s -> ", NonTerminalToString[Sent]);  
+        printf("%s", NonTerminalToString[Print]);
+        printf("%s", terminalToString[catSemiCol]);
 
         push( // ';'
             stack, createGenericToken(True, catSemiCol)
@@ -370,6 +434,8 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 30:
         printf("          %11s -> ", NonTerminalToString[Sent]);  
+        printf("%s", NonTerminalToString[Read]);
+        printf("%s", terminalToString[catSemiCol]);
 
         push( // ';'
             stack, createGenericToken(True, catSemiCol)
@@ -382,6 +448,8 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 31:
         printf("          %11s -> ", NonTerminalToString[Sent]);  
+        printf("%s", NonTerminalToString[FunCall]);
+        printf("%s", terminalToString[catSemiCol]);
 
         push( // ';'
             stack, createGenericToken(True, catSemiCol)
@@ -394,6 +462,8 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 32:
         printf("          %11s -> ", NonTerminalToString[Sent]);  
+        printf("%s ", NonTerminalToString[Return]);
+        printf("%s ", terminalToString[catSemiCol]);
 
         push( // ';'
             stack, createGenericToken(True, catSemiCol)
@@ -406,6 +476,10 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 33:
         printf("          %11s -> ", NonTerminalToString[Else]);  
+        printf("%s ", terminalToString[catElse]);
+        printf("%s ", terminalToString[catDo]);
+        printf("%s ", NonTerminalToString[SentList]);
+        printf("%s ", terminalToString[catEnd]);
 
         push( // 'end'
             stack, createGenericToken(True, catEnd)
@@ -424,11 +498,12 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 34:
         printf("          %11s -> Epsilon", NonTerminalToString[Else]);  
-
         break;
 
     case 35:
         printf("          %11s -> ", NonTerminalToString[Doing]);  
+        printf("%s ", terminalToString[catDoing]);
+        printf("%s ", NonTerminalToString[Atr]);
 
         push( // Atr
             stack, createGenericToken(False, Atr)
@@ -441,11 +516,12 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 36:
         printf("          %11s -> Epsilon", NonTerminalToString[Doing]);  
-
         break;
 
     case 37:
         printf("          %11s -> ", NonTerminalToString[Decl]);
+        printf("%s ", NonTerminalToString[VarType]);
+        printf("%s ", NonTerminalToString[Id]);
 
         push( // Id
             stack, createGenericToken(False, Id)
@@ -458,6 +534,8 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 38:
         printf("          %11s -> ", NonTerminalToString[Id]);
+        printf("%s ", terminalToString[catId]);
+        printf("%s ", NonTerminalToString[VecType]);
 
         push( // VecType
             stack, createGenericToken(False, VecType)
@@ -470,6 +548,9 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 39:
         printf("          %11s -> ", NonTerminalToString[VecType]);  
+        printf("%s ", terminalToString[catOpBrac]);
+        printf("%s ", NonTerminalToString[Exp]);
+        printf("%s ", terminalToString[catClsBrac]);
 
         push( // ']'
             stack, createGenericToken(True, catClsBrac)
@@ -485,11 +566,13 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 40:
         printf("          %11s -> Epsilon", NonTerminalToString[VecType]);  
-
         break;
 
     case 41:
         printf("          %11s -> ", NonTerminalToString[Atr]);  
+        printf("%s ", NonTerminalToString[Id]);
+        printf("%s ", terminalToString[catOpeAtr]);
+        printf("%s ", NonTerminalToString[Exp]);
 
         push( // Exp
             stack, createGenericToken(False, Exp)
@@ -505,6 +588,10 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 42:
         printf("          %11s -> ", NonTerminalToString[Print]);
+        printf("%s ", terminalToString[catPrint]);
+        printf("%s ", terminalToString[catOpPar]);
+        printf("%s ", NonTerminalToString[Exp]);
+        printf("%s ", terminalToString[catClsPar]);
 
         push( // ')'
             stack, createGenericToken(True, catClsPar)
@@ -522,6 +609,10 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 43:
         printf("          %11s -> ", NonTerminalToString[Read]);
+        printf("%s ", terminalToString[catRead]);
+        printf("%s ", terminalToString[catOpPar]);
+        printf("%s ", NonTerminalToString[Id]);
+        printf("%s ", NonTerminalToString[catClsPar]);
 
         push( // ')'
             stack, createGenericToken(True, catClsPar)
@@ -540,6 +631,8 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 44:
         printf("          %11s -> ", NonTerminalToString[FunCall]);  
+        printf("%s ", terminalToString[catFunId]);
+        printf("%s ", NonTerminalToString[OpClPar]);
 
         push( // OpClPar
             stack, createGenericToken(False, OpClPar)
@@ -551,6 +644,8 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 45:
         printf("          %11s -> ", NonTerminalToString[Return]);  
+        printf("%s ", terminalToString[catReturn]);
+        printf("%s ", NonTerminalToString[ReturnRec]);
 
         push( // ReturnRec
             stack, createGenericToken(False, ReturnRec)
@@ -562,6 +657,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 46:
         printf("          %11s -> ", NonTerminalToString[ReturnRec]);  
+        printf("%s ", NonTerminalToString[Exp]);
 
         push( // Exp
             stack, createGenericToken(False, Exp)
@@ -574,6 +670,8 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 48:
         printf("          %11s -> ", NonTerminalToString[Exp]);
+        printf("%s ", NonTerminalToString[BoolExp]);
+        printf("%s ", NonTerminalToString[ExpRec]);
 
         push( // ExpRec
             stack, createGenericToken(False, ExpRec)
@@ -586,6 +684,9 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 49:
         printf("          %11s -> ", NonTerminalToString[ExpRec]);  
+        printf("%s ", terminalToString[catOpeConc]);
+        printf("%s ", NonTerminalToString[BoolExp]);
+        printf("%s ", NonTerminalToString[ExpRec]);
 
         push( // ExpRec
             stack, createGenericToken(False, ExpRec)
@@ -605,6 +706,8 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 51:
         printf("          %11s -> ", NonTerminalToString[BoolExp]);  
+        printf("%s ", NonTerminalToString[BoolTerm]);
+        printf("%s ", NonTerminalToString[BoolExpRec]);
 
         push( // BoolExpRec
             stack, createGenericToken(False, BoolExpRec)
@@ -617,6 +720,9 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 52:
         printf("          %11s -> ", NonTerminalToString[BoolExpRec]);  
+        printf("%s ", terminalToString[catOpeOr]);
+        printf("%s ", NonTerminalToString[BoolTerm]);
+        printf("%s ", NonTerminalToString[BoolExpRec]);
 
         push( // BoolExpRec
             stack, createGenericToken(False, BoolExpRec)
@@ -636,6 +742,8 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 54:
         printf("          %11s -> ", NonTerminalToString[BoolTerm]);
+        printf("%s ", NonTerminalToString[BoolFac]);
+        printf("%s ", NonTerminalToString[BoolTermRec]);
 
         push( // BoolTermRec
             stack, createGenericToken(False, BoolTermRec)
@@ -648,6 +756,9 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 55:
         printf("          %11s -> ", NonTerminalToString[BoolTermRec]);  
+        printf("%s ", terminalToString[catOpeAnd]);
+        printf("%s ", NonTerminalToString[BoolFac]);
+        printf("%s ", NonTerminalToString[BoolTermRec]);
 
         push( // BoolTermRec
             stack, createGenericToken(False, BoolTermRec)
@@ -667,6 +778,8 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 57:
         printf("          %11s -> ", NonTerminalToString[BoolFac]);
+        printf("%s ", terminalToString[catOpeNeg]);
+        printf("%s ", NonTerminalToString[EqExp]);
 
         push( // EqExp
             stack, createGenericToken(False, EqExp)
@@ -680,6 +793,8 @@ Stack* stackProduction(Stack* stack, int production) {
     case 58:
         printf("          %11s -> ", NonTerminalToString[BoolFac]);  
 
+        printf("%s ", NonTerminalToString[EqExp]);
+
         push( // EqExp
             stack, createGenericToken(False, EqExp)
         );
@@ -688,6 +803,8 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 59:
         printf("          %11s -> ", NonTerminalToString[EqExp]);  
+        printf("%s ", NonTerminalToString[RelExp]);
+        printf("%s ", NonTerminalToString[EqExpAux]);
 
         push( // EqExpAux
             stack, createGenericToken(False, EqExpAux)
@@ -700,6 +817,8 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 60:
         printf("          %11s -> ", NonTerminalToString[EqExpAux]);
+        printf("%s ", NonTerminalToString[EqOpe]);
+        printf("%s ", NonTerminalToString[RelExp]);
 
         push( // RelExp
             stack, createGenericToken(False, RelExp)
@@ -716,6 +835,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 62:
         printf("          %11s -> ", NonTerminalToString[EqOpe]); 
+        printf("%s ", terminalToString[catOpeEq]);
 
         push( // '=='
             stack, createGenericToken(True, catOpeEq)
@@ -725,6 +845,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 63:
         printf("          %11s -> ", NonTerminalToString[EqOpe]);  
+        printf("%s ", terminalToString[catOpeDif]);
 
         push( // '!='
             stack, createGenericToken(True, catOpeDif)
@@ -734,6 +855,8 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 64:
         printf("          %11s -> ", NonTerminalToString[RelExp]);  
+        printf("%s ", terminalToString[catCteBool]);
+        printf("%s ", NonTerminalToString[RelExpRec]);
 
         push( // RelExpRec
             stack, createGenericToken(False, RelExpRec)
@@ -746,6 +869,8 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 65:
         printf("          %11s -> ", NonTerminalToString[RelExp]);
+        printf("%s ", NonTerminalToString[ArExp]);
+        printf("%s ", NonTerminalToString[RelExpRec]);
 
         push( // RelExpRec
             stack, createGenericToken(False, RelExpRec)
@@ -758,6 +883,10 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 66:
         printf("          %11s -> ", NonTerminalToString[RelExpRec]);
+
+        printf("%s ", NonTerminalToString[RelOpe]);
+        printf("%s ", NonTerminalToString[RelExp]);
+        printf("%s ", NonTerminalToString[RelExpRec]);
 
         push( // RelExpRec
             stack, createGenericToken(False, RelExpRec)
@@ -777,6 +906,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 68:
         printf("          %11s -> ", NonTerminalToString[RelOpe]);
+        printf("%s ", terminalToString[catOpeGt]);
 
         push( // '>'
             stack, createGenericToken(True, catOpeGt)
@@ -786,6 +916,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 69:
         printf("          %11s -> ", NonTerminalToString[RelOpe]);
+        printf("%s ", terminalToString[catOpeGte]);
 
         push( // '>='
             stack, createGenericToken(True, catOpeGte)
@@ -795,6 +926,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 70:
         printf("          %11s -> ", NonTerminalToString[RelOpe]);
+        printf("%s ", terminalToString[catOpeLt]);
 
         push( // '<'
             stack, createGenericToken(True, catOpeLt)
@@ -804,6 +936,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 71:
         printf("          %11s -> ", NonTerminalToString[RelOpe]);  
+        printf("%s ", terminalToString[catOpeLte]);
 
         push( // '<='
             stack, createGenericToken(True, catOpeLte)
@@ -813,6 +946,8 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 72:
         printf("          %11s -> ", NonTerminalToString[ArExp]);  
+        printf("%s ", NonTerminalToString[ArTerm]);
+        printf("%s ", NonTerminalToString[ArExpRec]);
 
         push( // ArExpRec
             stack, createGenericToken(False, ArExpRec)
@@ -825,6 +960,9 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 73:
         printf("          %11s -> ", NonTerminalToString[ArExpRec]);  
+        printf("%s ", NonTerminalToString[ArOpe]);
+        printf("%s ", NonTerminalToString[ArTerm]);
+        printf("%s ", NonTerminalToString[ArExpRec]);
 
         push( // ArExpRec
             stack, createGenericToken(False, ArExpRec)
@@ -840,11 +978,12 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 74:
         printf("          %11s -> Epsilon", NonTerminalToString[ArExpRec]);  
-
         break;
 
     case 75:
         printf("          %11s -> ", NonTerminalToString[ArTerm]);  
+        printf("%s ", NonTerminalToString[ArFac]);
+        printf("%s ", NonTerminalToString[ArTermRec]);
 
         push( // ArTermRec
             stack, createGenericToken(False, ArTermRec)
@@ -857,6 +996,9 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 76:
         printf("          %11s -> ", NonTerminalToString[ArTermRec]);  
+        printf("%s ", NonTerminalToString[MultOpe]);
+        printf("%s ", NonTerminalToString[ArFac]);
+        printf("%s ", NonTerminalToString[ArTermRec]);
 
         push( // ArTermRec
             stack, createGenericToken(False, ArTermRec)
@@ -872,11 +1014,13 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 77:
         printf("          %11s -> Epsilon", NonTerminalToString[ArTermRec]);  
-
         break;
 
     case 78:
         printf("          %11s -> ", NonTerminalToString[ArFac]);  
+        printf("%s ", terminalToString[catOpPar]);
+        printf("%s ", NonTerminalToString[ArExp]);
+        printf("%s ", terminalToString[catClsPar]);
 
         push( // ')'
             stack, createGenericToken(True, catClsPar)
@@ -892,6 +1036,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 79:
         printf("          %11s -> ", NonTerminalToString[ArFac]);
+        printf("%s ", NonTerminalToString[Id]);
 
         push( // Id
             stack, createGenericToken(False, Id)
@@ -901,6 +1046,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 80:
         printf("          %11s -> ", NonTerminalToString[ArFac]);
+        printf("%s ", NonTerminalToString[FunCall]);
 
         push( // FunCall
             stack, createGenericToken(False, FunCall)
@@ -910,6 +1056,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 81:
         printf("          %11s -> ", NonTerminalToString[ArFac]);
+        printf("%s ", terminalToString[catCteInt]);
 
         push( // 'CteInt'
             stack, createGenericToken(True, catCteInt)
@@ -919,6 +1066,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 82:
         printf("          %11s -> ", NonTerminalToString[ArFac]);
+        printf("%s ", terminalToString[catCteFloat]);
 
         push( // 'CteFloat'
             stack, createGenericToken(True, catCteFloat)
@@ -928,6 +1076,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 83:
         printf("          %11s -> ", NonTerminalToString[ArFac]);
+        printf("%s ", terminalToString[catCteStr]);
 
         push( // 'CteString'
             stack, createGenericToken(True, catCteStr)
@@ -937,6 +1086,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 84:
         printf("          %11s -> ", NonTerminalToString[ArFac]);
+        printf("%s ", terminalToString[catCteChar]);
 
         push( // 'CteChar'
             stack, createGenericToken(True, catCteChar)
@@ -946,6 +1096,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 85:
         printf("          %11s -> ", NonTerminalToString[ArOpe]);
+        printf("%s ", terminalToString[catOpeSum]);
 
         push( // '+'
             stack, createGenericToken(True, catOpeSum)
@@ -955,6 +1106,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 86:
         printf("          %11s -> ", NonTerminalToString[ArOpe]);
+        printf("%s ", terminalToString[catOpeSub]);
 
         push( // '-'
             stack, createGenericToken(True, catOpeSub)
@@ -964,6 +1116,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 87:
         printf("          %11s -> ", NonTerminalToString[MultOpe]);
+        printf("%s ", terminalToString[catOpeMult]);
 
         push( // '*'
             stack, createGenericToken(True, catOpeMult)
@@ -973,6 +1126,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 88:
         printf("          %11s -> ", NonTerminalToString[MultOpe]);
+        printf("%s ", terminalToString[catOpeDiv]);
 
         push( // '/'
             stack, createGenericToken(True, catOpeDiv)
@@ -982,6 +1136,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
     case 89:
         printf("          %11s -> ", NonTerminalToString[MultOpe]);
+        printf("%s ", terminalToString[catOpeMod]);
 
         push( // '%'
             stack, createGenericToken(True, catOpeMod)
