@@ -59,6 +59,15 @@ Boolean push(Stack* stack, GenericToken* gerToken) {
         stack->top = gerToken;
         ++stack->size;
 
+        //dont print S
+        if(!(!gerToken->isTerminal && gerToken->catNum == S)) {
+            if (gerToken->isTerminal) {
+                printf("'%s' ", categoryToString[gerToken->catNum]);
+            } else {
+                printf("%s ", NonTerminalToString[gerToken->catNum]);
+            }
+        }
+
         return True;
     } else {
 

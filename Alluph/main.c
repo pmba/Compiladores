@@ -72,13 +72,13 @@ int main(int argc, char const *argv[]) {
             TokenList = nextToken(TokenList);
         }
 
-        showStack(stack, 3);
+        //showStack(stack, 3);
         current_Gtoken = pop(stack);
         
         if(current_Gtoken->isTerminal) {
             
             if(current_Gtoken->catNum == current_token->category) {
-                printf("Match: Pilha: %s\t\tToken: %s\n", categoryToString[current_Gtoken->catNum],categoryToString[current_token->category]);
+                //printf("Match: Pilha: %s\t\tToken: %s\n", categoryToString[current_Gtoken->catNum],categoryToString[current_token->category]);
                 current_token = NULL;
             }
 
@@ -91,7 +91,7 @@ int main(int argc, char const *argv[]) {
         else {
            
             int rule = preditive_table[current_Gtoken->catNum][current_token->category];
-            printf("Rule: %d\tPilha: %s\t\tToken: %s\n", rule, NonTerminalToString[current_Gtoken->catNum],categoryToString[current_token->category]);
+            //printf("Rule: %d\tPilha: %s\t\tToken: %s\n", rule, NonTerminalToString[current_Gtoken->catNum],categoryToString[current_token->category]);
 
             if(rule == -1 || rule == -2) {
                 printf("Error: %d\n", rule);

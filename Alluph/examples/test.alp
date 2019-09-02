@@ -12,8 +12,13 @@ function int _main() do
     a = 10;
     b = 20;
     c = _sum(a, b);
+    
+    from i = 0 to size do
+        print(numbers[i]);
+    
+    end
 
-    if !a>b do
+    if !a > b do
         print(result);
     end
     else do
