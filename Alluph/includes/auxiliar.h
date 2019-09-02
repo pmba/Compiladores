@@ -5,7 +5,7 @@
 #define _DEBUG if(False)
 #define _LINEREADPRINT if (True)
 
-#define NonTerminalQuant 42
+#define NonTerminalQuant 43
 #define TerminalsQuant 49
 
 typedef enum boolean {
@@ -20,43 +20,44 @@ typedef enum non_term {
     FunId,      // 2
     VarType,    // 3
     FunType,    // 4
-    OpClPar,    // 5
-    Par,        // 6
-    ParAux,     // 7
-    SentList,   // 8
-    SentListAux,// 9
-    Sent,       // 10
-    Else,       // 11
-    Doing,      // 12
-    Decl,       // 13
-    Id,         // 14
-    VecType,    // 15
-    Atr,        // 16
-    Print,      // 17
-    Read,       // 18
-    FunCall,    // 19
-    Return,     // 20
-    ReturnRec,  // 21
-    Exp,        // 22
-    ExpRec,     // 23
-    BoolExp,    // 24
-    BoolExpRec, // 25
-    BoolTerm,   // 26
-    BoolTermRec,// 27
-    BoolFac,    // 28
-    EqExp,      // 29
-    EqExpAux,   // 30
-    EqOpe,      // 31
-    RelExp,     // 32 
-    RelExpRec,  // 33
-    RelOpe,     // 34
-    ArExp,      // 35
-    ArExpRec,   // 36
-    ArTerm,     // 37
-    ArTermRec,  // 38
-    ArFac,      // 39
-    ArOpe,      // 40
-    MultOpe     // 41
+    FunTypeAux, // 5
+    OpClPar,    // 6
+    Par,        // 7
+    ParAux,     // 8
+    SentList,   // 9
+    SentListAux,// 10
+    Sent,       // 11
+    Else,       // 12
+    Doing,      // 13
+    Decl,       // 14
+    Id,         // 15
+    VecType,    // 16
+    Atr,        // 17
+    Print,      // 18
+    Read,       // 19
+    FunCall,    // 20
+    Return,     // 21
+    ReturnRec,  // 22
+    Exp,        // 23
+    ExpRec,     // 24
+    BoolExp,    // 25
+    BoolExpRec, // 26
+    BoolTerm,   // 27
+    BoolTermRec,// 28
+    BoolFac,    // 29
+    EqExp,      // 30
+    EqExpAux,   // 31
+    EqOpe,      // 32
+    RelExp,     // 33 
+    RelExpRec,  // 34
+    RelOpe,     // 35
+    ArExp,      // 36
+    ArExpRec,   // 37
+    ArTerm,     // 38
+    ArTermRec,  // 39
+    ArFac,      // 40
+    ArOpe,      // 41
+    MultOpe     // 42
 
 } NonTerminal;
 
@@ -73,20 +74,20 @@ typedef enum category {
     catString,  // 7
     catBool,    // 8
     catChar,    // 9
-    catVoid,    // 10
-    catOpPar,   // 11
-    catClsPar,  // 12
-    catComma,   // 13
-    catId,      // 14
-    catIf,      // 15
-    catWhile,   // 16
-    catFrom,    // 17
-    catTo,      // 18
-    catElse,    // 19
-    catDoing,   // 20
-    catSemiCol, // 21
-    catOpBrac,  // 22
-    catClsBrac, // 23
+    catVoid,    // 10    
+    catOpBrac,  // 11
+    catClsBrac, // 12
+    catOpPar,   // 13
+    catClsPar,  // 14
+    catComma,   // 15
+    catId,      // 16
+    catIf,      // 17
+    catWhile,   // 18
+    catFrom,    // 19
+    catTo,      // 20
+    catElse,    // 21
+    catDoing,   // 22
+    catSemiCol, // 23
     catOpeAtr,  // 24
     catPrint,   // 25
     catRead,    // 26

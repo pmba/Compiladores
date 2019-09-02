@@ -61,6 +61,8 @@ const char regular_exp_pattern[][90] = {
     "^bool$", 
     "^char$", 
     "^void$", 
+    "^\\[$", 
+    "^]$",
     "^\\($", 
     "^)$",
     "^,$", 
@@ -72,8 +74,6 @@ const char regular_exp_pattern[][90] = {
     "^else$", 
     "^doing$", 
     "^;$", 
-    "^\\[$", 
-    "^]$",
     "^=$", 
     "^print$", 
     "^read$", 
@@ -165,7 +165,7 @@ Token* recognizeWord(char* word, int col) {
             aux[strlen(word)] = '\0';
 
             //regex Id case
-            if(i == 14) {
+            if(i == 16) {
                 //each keyword
                 Boolean flag = False;
                 for(int j = 0; j < 23; ++j) {

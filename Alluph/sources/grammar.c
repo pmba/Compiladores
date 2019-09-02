@@ -108,6 +108,9 @@ Stack* stackProduction(Stack* stack, int production) {
         break;
 
     case 11:
+        push( // FunTypeAux
+            stack, createGenericToken(False, FunTypeAux)
+        );        
         push( // VarType
             stack, createGenericToken(False, VarType)
         );
@@ -122,6 +125,20 @@ Stack* stackProduction(Stack* stack, int production) {
         break;
 
     case 13:
+        push( // ']'
+            stack, createGenericToken(True, catClsBrac)
+        );
+
+        push( // '['
+            stack, createGenericToken(True, catOpBrac)
+        );
+
+        break;
+
+    case 14:
+        break;
+
+    case 15:
         push( // ')'
             stack, createGenericToken(True, catClsPar)
         );
@@ -134,14 +151,14 @@ Stack* stackProduction(Stack* stack, int production) {
 
         break;    
 
-    case 14:
+    case 16:
         push( // ParAux
             stack, createGenericToken(False, ParAux)
         );
 
         break;
 
-    case 15:
+    case 17:
         push( // ParAux
             stack, createGenericToken(False, ParAux)
         );
@@ -151,12 +168,15 @@ Stack* stackProduction(Stack* stack, int production) {
 
         break;
 
-    case 16:
+    case 18:
         break;
 
-    case 17:
+    case 19:
         push( // Par
             stack, createGenericToken(False, Par)
+        );
+        push( // FunTypeAux
+            stack, createGenericToken(False, FunTypeAux)
         );
         push( // 'id'
             stack, createGenericToken(True, catId)
@@ -167,7 +187,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
         break;
     
-    case 18:
+    case 20:
         push( // Par
             stack, createGenericToken(False, Par)
         );
@@ -177,7 +197,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
         break;
 
-    case 19:
+    case 21:
         push( // SentListAux
             stack, createGenericToken(False, SentListAux)
         );
@@ -187,17 +207,17 @@ Stack* stackProduction(Stack* stack, int production) {
 
         break;
 
-    case 20:
+    case 22:
         push( // SentList
             stack, createGenericToken(False, SentList)
         );
 
         break;
 
-    case 21:
+    case 23:
         break;
 
-    case 22:
+    case 24:
         push( // Else
             stack, createGenericToken(False, Else)
         );
@@ -219,7 +239,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
         break;
 
-    case 23:
+    case 25:
         push( // 'end'
             stack, createGenericToken(True, catEnd)
         );
@@ -238,7 +258,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
         break;
 
-    case 24:
+    case 26:
         push( // 'end'
             stack, createGenericToken(True, catEnd)
         );
@@ -257,8 +277,8 @@ Stack* stackProduction(Stack* stack, int production) {
         push( // 'to'
             stack, createGenericToken(True, catTo)
         );
-        push( // BoolExp
-            stack, createGenericToken(False, BoolExp)
+        push( // Atr
+            stack, createGenericToken(False, Atr)
         );
         push( // 'from'
             stack, createGenericToken(True, catFrom)
@@ -266,49 +286,49 @@ Stack* stackProduction(Stack* stack, int production) {
 
         break;
 
-    case 25:
+    case 27:
         push( // Decl
             stack, createGenericToken(False, Decl)
         );
 
         break;
 
-    case 26:
+    case 28:
         push( // Atr
             stack, createGenericToken(False, Atr)
         );
 
         break;
 
-    case 27:
+    case 29:
         push( // Print
             stack, createGenericToken(False, Print)
         );
 
         break;
 
-    case 28:
+    case 30:
         push( // Read
             stack, createGenericToken(False, Read)
         );
 
         break;
 
-    case 29:
+    case 31:
         push( // FunCall
             stack, createGenericToken(False, FunCall)
         );
 
         break;
 
-    case 30:
+    case 32:
         push( // Return
             stack, createGenericToken(False, Return)
         );
 
         break;
 
-    case 31:
+    case 33:
         push( // 'end'
             stack, createGenericToken(True, catEnd)
         );
@@ -324,10 +344,10 @@ Stack* stackProduction(Stack* stack, int production) {
 
         break;
 
-    case 32:
+    case 34:
         break;
 
-    case 33:
+    case 35:
         push( // Atr
             stack, createGenericToken(False, Atr)
         );
@@ -337,10 +357,10 @@ Stack* stackProduction(Stack* stack, int production) {
 
         break;
 
-    case 34:
+    case 36:
         break;
 
-    case 35:
+    case 37:
         push( // ';'
             stack, createGenericToken(True, catSemiCol)
         );
@@ -353,7 +373,7 @@ Stack* stackProduction(Stack* stack, int production) {
     
         break;
 
-    case 36:
+    case 38:
         push( // VecType
             stack, createGenericToken(False, VecType)
         );
@@ -363,7 +383,7 @@ Stack* stackProduction(Stack* stack, int production) {
     
         break;
 
-    case 37:
+    case 39:
         push( // ']'
             stack, createGenericToken(True, catClsBrac)
         );
@@ -376,10 +396,10 @@ Stack* stackProduction(Stack* stack, int production) {
 
         break;
 
-    case 38:
+    case 40:
         break;
 
-    case 39:
+    case 41:
         push( // ';'
             stack, createGenericToken(True, catSemiCol)
         );   
@@ -395,7 +415,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
         break;
 
-    case 40:
+    case 42:
         push( // ';'
             stack, createGenericToken(True, catSemiCol)
         );   
@@ -413,7 +433,7 @@ Stack* stackProduction(Stack* stack, int production) {
         );    
         break;
 
-    case 41:
+    case 43:
         push( // ';'
             stack, createGenericToken(True, catSemiCol)
         );   
@@ -432,7 +452,7 @@ Stack* stackProduction(Stack* stack, int production) {
     
         break;
 
-    case 42:
+    case 44:
         push( // ';'
             stack, createGenericToken(True, catSemiCol)
         );
@@ -444,7 +464,7 @@ Stack* stackProduction(Stack* stack, int production) {
         );
         break;
 
-    case 43:
+    case 45:
 
         push( // ReturnRec
             stack, createGenericToken(False, ReturnRec)
@@ -454,7 +474,7 @@ Stack* stackProduction(Stack* stack, int production) {
         );
         break;
 
-    case 44:
+    case 46:
         push( // ';'
             stack, createGenericToken(True, catSemiCol)
         );
@@ -463,13 +483,13 @@ Stack* stackProduction(Stack* stack, int production) {
         );
         break;
 
-    case 45:
+    case 47:
         push( // ';'
             stack, createGenericToken(True, catSemiCol)
         );
         break;
 
-    case 46:
+    case 48:
         push( // ExpRec
             stack, createGenericToken(False, ExpRec)
         );
@@ -479,7 +499,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
         break;
 
-    case 47:
+    case 49:
         push( // ExpRec
             stack, createGenericToken(False, ExpRec)
         );
@@ -492,10 +512,10 @@ Stack* stackProduction(Stack* stack, int production) {
 
         break;
 
-    case 48:
+    case 50:
         break;
 
-    case 49:
+    case 51:
         push( // BoolExpRec
             stack, createGenericToken(False, BoolExpRec)
         );
@@ -505,7 +525,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
         break;
 
-    case 50:
+    case 52:
         push( // BoolExpRec
             stack, createGenericToken(False, BoolExpRec)
         );
@@ -518,10 +538,10 @@ Stack* stackProduction(Stack* stack, int production) {
 
         break;
 
-    case 51:
+    case 53:
         break;
 
-    case 52:
+    case 54:
         push( // BoolTermRec
             stack, createGenericToken(False, BoolTermRec)
         );
@@ -531,7 +551,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
         break;
 
-    case 53:
+    case 55:
         push( // BoolTermRec
             stack, createGenericToken(False, BoolTermRec)
         );
@@ -544,10 +564,10 @@ Stack* stackProduction(Stack* stack, int production) {
 
         break;
 
-    case 54:
+    case 56:
         break;
 
-    case 55:
+    case 57:
         push( // EqExp
             stack, createGenericToken(False, EqExp)
         );
@@ -557,14 +577,14 @@ Stack* stackProduction(Stack* stack, int production) {
         
         break;
 
-    case 56:
+    case 58:
         push( // EqExp
             stack, createGenericToken(False, EqExp)
         );
 
         break;
 
-    case 57:
+    case 59:
         push( // EqExpAux
             stack, createGenericToken(False, EqExpAux)
         );
@@ -574,7 +594,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
         break;
 
-    case 58:
+    case 60:
         push( // RelExp
             stack, createGenericToken(False, RelExp)
         );
@@ -584,24 +604,24 @@ Stack* stackProduction(Stack* stack, int production) {
 
         break;
 
-    case 59:
+    case 61:
         break;
 
-    case 60:
+    case 62:
         push( // '=='
             stack, createGenericToken(True, catOpeEq)
         );
 
         break;
 
-    case 61:
+    case 63:
         push( // '!='
             stack, createGenericToken(True, catOpeDif)
         );
 
         break;
 
-    case 62:
+    case 64:
         push( // RelExpRec
             stack, createGenericToken(False, RelExpRec)
         );
@@ -611,7 +631,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
         break;
 
-    case 63:
+    case 65:
         push( // RelExpRec
             stack, createGenericToken(False, RelExpRec)
         );
@@ -621,7 +641,7 @@ Stack* stackProduction(Stack* stack, int production) {
     
         break;
 
-    case 64:
+    case 66:
         push( // RelExpRec
             stack, createGenericToken(False, RelExpRec)
         );
@@ -634,38 +654,38 @@ Stack* stackProduction(Stack* stack, int production) {
     
         break;
 
-    case 65:
+    case 67:
         break;
 
-    case 66:
+    case 68:
         push( // '>'
             stack, createGenericToken(True, catOpeGt)
         );
 
         break;
 
-    case 67:
+    case 69:
         push( // '>='
             stack, createGenericToken(True, catOpeGte)
         );
 
         break;
 
-    case 68:
+    case 70:
         push( // '<'
             stack, createGenericToken(True, catOpeLt)
         );
 
         break;
 
-    case 69:
+    case 71:
         push( // '<='
             stack, createGenericToken(True, catOpeLte)
         );
 
         break;
 
-    case 70:
+    case 72:
         push( // ArExpRec
             stack, createGenericToken(False, ArExpRec)
         );
@@ -675,7 +695,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
         break;
 
-    case 71:
+    case 73:
         push( // ArExpRec
             stack, createGenericToken(False, ArExpRec)
         );
@@ -688,10 +708,10 @@ Stack* stackProduction(Stack* stack, int production) {
 
         break;
 
-    case 72:
+    case 74:
         break;
 
-    case 73:
+    case 75:
         push( // ArTermRec
             stack, createGenericToken(False, ArTermRec)
         );
@@ -701,7 +721,7 @@ Stack* stackProduction(Stack* stack, int production) {
 
         break;
 
-    case 74:
+    case 76:
         push( // ArTermRec
             stack, createGenericToken(False, ArTermRec)
         );
@@ -714,10 +734,10 @@ Stack* stackProduction(Stack* stack, int production) {
 
         break;
 
-    case 75:
+    case 77:
         break;
 
-    case 76:
+    case 78:
         push( // ')'
             stack, createGenericToken(True, catClsPar)
         );
@@ -730,77 +750,77 @@ Stack* stackProduction(Stack* stack, int production) {
 
         break;
 
-    case 77:
+    case 79:
         push( // Id
             stack, createGenericToken(False, Id)
         );
 
         break;
 
-    case 78:
+    case 80:
         push( // FunCall
             stack, createGenericToken(False, FunCall)
         );
 
         break;
 
-    case 79:
+    case 81:
         push( // 'CteInt'
             stack, createGenericToken(True, catCteInt)
         );
 
         break;
 
-    case 80:
+    case 82:
         push( // 'CteFloat'
             stack, createGenericToken(True, catCteFloat)
         );
 
         break;
 
-    case 81:
+    case 83:
         push( // 'CteString'
             stack, createGenericToken(True, catCteStr)
         );
 
         break;
 
-    case 82:
+    case 84:
         push( // 'CteChar'
             stack, createGenericToken(True, catCteChar)
         );
 
         break;
 
-    case 83:
+    case 85:
         push( // '+'
             stack, createGenericToken(True, catOpeSum)
         );
 
         break;
 
-    case 84:
+    case 86:
         push( // '-'
             stack, createGenericToken(True, catOpeSub)
         );
 
         break;
 
-    case 85:
+    case 87:
         push( // '*'
             stack, createGenericToken(True, catOpeMult)
         );
 
         break;
 
-    case 86:
+    case 88:
         push( // '/'
             stack, createGenericToken(True, catOpeDiv)
         );
 
         break;
 
-    case 87:
+    case 89:
         push( // '%'
             stack, createGenericToken(True, catOpeMod)
         );

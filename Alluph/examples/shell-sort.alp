@@ -11,7 +11,7 @@ function int[] _shellSort(int nums[], int size) do
     
     while gap > 0 do
     
-        from i = gap to size do
+        from i = gap; to size do
         
             value = nums[i];
             j = i;
@@ -46,17 +46,17 @@ function int main() do
     
     print("Insira os numeros");
     
-    from i = 0 to size do
+    from i = 0; to size do
         read(numbers[i]);
     end
     
-    from i = 0 to size do
+    from i = 0; to size do
         print(numbers[i]);
     end
     
     numbers = _shellSort(numbers, size);
     
-    from i = 0 to size do
+    from i = 0; to size do
         print(numbers[i]);
     end
 
