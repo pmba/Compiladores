@@ -1,0 +1,1184 @@
+0001  "function int[] _shellSort(int nums[], int size) do"
+          [0001, 0008] (0000,          catFunction) {function}
+                    S = DefFunList 
+           DefFunList = 'function' FunType FunId OpClPar 'do' SentList 'end' DefFunList 
+          [0001, 0012] (0005,               catInt) {int}
+              FunType = VarType FunTypeAux 
+              VarType = 'int' 
+          [0001, 0012] (0011,            catOpBrac) {[}
+           FunTypeAux = '[' ']' 
+          [0001, 0013] (0012,           catClsBrac) {]}
+          [0001, 0025] (0003,             catFunId) {_shellSort}
+                FunId = 'funId' 
+          [0001, 0025] (0013,             catOpPar) {(}
+              OpClPar = '(' Par ')' 
+          [0001, 0029] (0005,               catInt) {int}
+                  Par = ParAux 
+               ParAux = VarType 'id' FunTypeAux Par 
+              VarType = 'int' 
+          [0001, 0034] (0016,                catId) {nums}
+          [0001, 0034] (0011,            catOpBrac) {[}
+           FunTypeAux = '[' ']' 
+          [0001, 0035] (0012,           catClsBrac) {]}
+          [0001, 0036] (0015,             catComma) {,}
+                  Par = ',' ParAux 
+          [0001, 0041] (0005,               catInt) {int}
+               ParAux = VarType 'id' FunTypeAux Par 
+              VarType = 'int' 
+          [0001, 0046] (0016,                catId) {size}
+          [0001, 0046] (0014,            catClsPar) {)}
+           FunTypeAux = Epsilon
+                  Par = Epsilon
+          [0001, 0050] (0001,                catDo) {do}
+0002  "    int i;"
+          [0002, 0007] (0005,               catInt) {int}
+             SentList = Sent SentListAux 
+                 Sent = Decl ';' 
+                 Decl = VarType Id 
+              VarType = 'int' 
+          [0002, 0009] (0016,                catId) {i}
+                   Id = 'id' VecType 
+          [0002, 0009] (0021,           catSemiCol) {;}
+              VecType = Epsilon
+0003  "    int j;"
+          [0003, 0007] (0005,               catInt) {int}
+          SentListAux = SentList 
+             SentList = Sent SentListAux 
+                 Sent = Decl ';' 
+                 Decl = VarType Id 
+              VarType = 'int' 
+          [0003, 0009] (0016,                catId) {j}
+                   Id = 'id' VecType 
+          [0003, 0009] (0021,           catSemiCol) {;}
+              VecType = Epsilon
+0004  "    int value;"
+          [0004, 0007] (0005,               catInt) {int}
+          SentListAux = SentList 
+             SentList = Sent SentListAux 
+                 Sent = Decl ';' 
+                 Decl = VarType Id 
+              VarType = 'int' 
+          [0004, 0013] (0016,                catId) {value}
+                   Id = 'id' VecType 
+          [0004, 0013] (0021,           catSemiCol) {;}
+              VecType = Epsilon
+0005  "    int gap;"
+          [0005, 0007] (0005,               catInt) {int}
+          SentListAux = SentList 
+             SentList = Sent SentListAux 
+                 Sent = Decl ';' 
+                 Decl = VarType Id 
+              VarType = 'int' 
+          [0005, 0011] (0016,                catId) {gap}
+                   Id = 'id' VecType 
+          [0005, 0011] (0021,           catSemiCol) {;}
+              VecType = Epsilon
+0006  "    "
+0007  "    gap = 1;"
+          [0007, 0007] (0016,                catId) {gap}
+          SentListAux = SentList 
+             SentList = Sent SentListAux 
+                 Sent = Atr ';' 
+                  Atr = Id '=' Exp 
+                   Id = 'id' VecType 
+          [0007, 0008] (0024,            catOpeAtr) {=}
+              VecType = Epsilon
+          [0007, 0011] (0039,            catCteInt) {1}
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = 'CteInt' 
+          [0007, 0011] (0021,           catSemiCol) {;}
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+0008  "    while gap < size do"
+          [0008, 0009] (0018,             catWhile) {while}
+          SentListAux = SentList 
+             SentList = Sent SentListAux 
+                 Sent = 'while' BoolExp 'do' SentList 'end' 
+          [0008, 0013] (0016,                catId) {gap}
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0008, 0014] (0037,             catOpeLt) {<}
+              VecType = Epsilon
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = RelOpe RelExp RelExpRec 
+               RelOpe = '<' 
+          [0008, 0020] (0016,                catId) {size}
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0008, 0023] (0001,                catDo) {do}
+              VecType = Epsilon
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+0009  "        gap = 3*gap+1;"
+          [0009, 0011] (0016,                catId) {gap}
+             SentList = Sent SentListAux 
+                 Sent = Atr ';' 
+                  Atr = Id '=' Exp 
+                   Id = 'id' VecType 
+          [0009, 0012] (0024,            catOpeAtr) {=}
+              VecType = Epsilon
+          [0009, 0015] (0039,            catCteInt) {3}
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = 'CteInt' 
+          [0009, 0015] (0045,           catOpeMult) {*}
+            ArTermRec = MultOpe ArFac ArTermRec 
+              MultOpe = '*' 
+          [0009, 0019] (0016,                catId) {gap}
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0009, 0019] (0043,            catOpeSum) {+}
+              VecType = Epsilon
+            ArTermRec = Epsilon
+             ArExpRec = ArOpe ArTerm ArExpRec 
+                ArOpe = '+' 
+          [0009, 0021] (0039,            catCteInt) {1}
+               ArTerm = ArFac ArTermRec 
+                ArFac = 'CteInt' 
+          [0009, 0021] (0021,           catSemiCol) {;}
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+0010  "    end"
+          [0010, 0007] (0002,               catEnd) {end}
+          SentListAux = Epsilon
+0011  "    "
+0012  "    while gap > 0 do"
+          [0012, 0009] (0018,             catWhile) {while}
+          SentListAux = SentList 
+             SentList = Sent SentListAux 
+                 Sent = 'while' BoolExp 'do' SentList 'end' 
+          [0012, 0013] (0016,                catId) {gap}
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0012, 0014] (0035,             catOpeGt) {>}
+              VecType = Epsilon
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = RelOpe RelExp RelExpRec 
+               RelOpe = '>' 
+          [0012, 0017] (0039,            catCteInt) {0}
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = 'CteInt' 
+          [0012, 0020] (0001,                catDo) {do}
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+0013  "    "
+0014  "        from i = gap to size do"
+          [0014, 0012] (0019,              catFrom) {from}
+             SentList = Sent SentListAux 
+                 Sent = 'from' Atr 'to' ArExp Doing 'do' SentList 'end' 
+          [0014, 0014] (0016,                catId) {i}
+                  Atr = Id '=' Exp 
+                   Id = 'id' VecType 
+          [0014, 0015] (0024,            catOpeAtr) {=}
+              VecType = Epsilon
+          [0014, 0020] (0016,                catId) {gap}
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0014, 0023] (0020,                catTo) {to}
+              VecType = Epsilon
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+          [0014, 0028] (0016,                catId) {size}
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0014, 0031] (0001,                catDo) {do}
+              VecType = Epsilon
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+                Doing = Epsilon
+0015  "        "
+0016  "            value = nums[i];"
+          [0016, 0017] (0016,                catId) {value}
+             SentList = Sent SentListAux 
+                 Sent = Atr ';' 
+                  Atr = Id '=' Exp 
+                   Id = 'id' VecType 
+          [0016, 0018] (0024,            catOpeAtr) {=}
+              VecType = Epsilon
+          [0016, 0024] (0016,                catId) {nums}
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0016, 0024] (0011,            catOpBrac) {[}
+              VecType = '[' Exp ']' 
+          [0016, 0026] (0016,                catId) {i}
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0016, 0026] (0012,           catClsBrac) {]}
+              VecType = Epsilon
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+          [0016, 0027] (0021,           catSemiCol) {;}
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+0017  "            j = i;"
+          [0017, 0013] (0016,                catId) {j}
+          SentListAux = SentList 
+             SentList = Sent SentListAux 
+                 Sent = Atr ';' 
+                  Atr = Id '=' Exp 
+                   Id = 'id' VecType 
+          [0017, 0014] (0024,            catOpeAtr) {=}
+              VecType = Epsilon
+          [0017, 0017] (0016,                catId) {i}
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0017, 0017] (0021,           catSemiCol) {;}
+              VecType = Epsilon
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+0018  "            "
+0019  "            while j > gap-1 and value <= nums[j-gap] do"
+          [0019, 0017] (0018,             catWhile) {while}
+          SentListAux = SentList 
+             SentList = Sent SentListAux 
+                 Sent = 'while' BoolExp 'do' SentList 'end' 
+          [0019, 0019] (0016,                catId) {j}
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0019, 0020] (0035,             catOpeGt) {>}
+              VecType = Epsilon
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = RelOpe RelExp RelExpRec 
+               RelOpe = '>' 
+          [0019, 0025] (0016,                catId) {gap}
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0019, 0025] (0044,            catOpeSub) {-}
+              VecType = Epsilon
+            ArTermRec = Epsilon
+             ArExpRec = ArOpe ArTerm ArExpRec 
+                ArOpe = '-' 
+          [0019, 0027] (0039,            catCteInt) {1}
+               ArTerm = ArFac ArTermRec 
+                ArFac = 'CteInt' 
+          [0019, 0031] (0030,            catOpeAnd) {and}
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = 'and' BoolFac BoolTermRec 
+          [0019, 0037] (0016,                catId) {value}
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0019, 0038] (0038,            catOpeLte) {<=}
+              VecType = Epsilon
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = RelOpe RelExp RelExpRec 
+               RelOpe = '<=' 
+          [0019, 0045] (0016,                catId) {nums}
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0019, 0045] (0011,            catOpBrac) {[}
+              VecType = '[' Exp ']' 
+          [0019, 0047] (0016,                catId) {j}
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0019, 0047] (0044,            catOpeSub) {-}
+              VecType = Epsilon
+            ArTermRec = Epsilon
+             ArExpRec = ArOpe ArTerm ArExpRec 
+                ArOpe = '-' 
+          [0019, 0051] (0016,                catId) {gap}
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0019, 0051] (0012,           catClsBrac) {]}
+              VecType = Epsilon
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+          [0019, 0055] (0001,                catDo) {do}
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+0020  "            "
+0021  "                nums[j] = nums[j-gap];"
+          [0021, 0020] (0016,                catId) {nums}
+             SentList = Sent SentListAux 
+                 Sent = Atr ';' 
+                  Atr = Id '=' Exp 
+                   Id = 'id' VecType 
+          [0021, 0020] (0011,            catOpBrac) {[}
+              VecType = '[' Exp ']' 
+          [0021, 0022] (0016,                catId) {j}
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0021, 0022] (0012,           catClsBrac) {]}
+              VecType = Epsilon
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+          [0021, 0024] (0024,            catOpeAtr) {=}
+          [0021, 0030] (0016,                catId) {nums}
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0021, 0030] (0011,            catOpBrac) {[}
+              VecType = '[' Exp ']' 
+          [0021, 0032] (0016,                catId) {j}
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0021, 0032] (0044,            catOpeSub) {-}
+              VecType = Epsilon
+            ArTermRec = Epsilon
+             ArExpRec = ArOpe ArTerm ArExpRec 
+                ArOpe = '-' 
+          [0021, 0036] (0016,                catId) {gap}
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0021, 0036] (0012,           catClsBrac) {]}
+              VecType = Epsilon
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+          [0021, 0037] (0021,           catSemiCol) {;}
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+0022  "                j = j-gap;"
+          [0022, 0017] (0016,                catId) {j}
+          SentListAux = SentList 
+             SentList = Sent SentListAux 
+                 Sent = Atr ';' 
+                  Atr = Id '=' Exp 
+                   Id = 'id' VecType 
+          [0022, 0018] (0024,            catOpeAtr) {=}
+              VecType = Epsilon
+          [0022, 0021] (0016,                catId) {j}
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0022, 0021] (0044,            catOpeSub) {-}
+              VecType = Epsilon
+            ArTermRec = Epsilon
+             ArExpRec = ArOpe ArTerm ArExpRec 
+                ArOpe = '-' 
+          [0022, 0025] (0016,                catId) {gap}
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0022, 0025] (0021,           catSemiCol) {;}
+              VecType = Epsilon
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+0023  "                "
+0024  "            end"
+          [0024, 0015] (0002,               catEnd) {end}
+          SentListAux = Epsilon
+0025  "            "
+0026  "            nums[j] = value;"
+          [0026, 0016] (0016,                catId) {nums}
+          SentListAux = SentList 
+             SentList = Sent SentListAux 
+                 Sent = Atr ';' 
+                  Atr = Id '=' Exp 
+                   Id = 'id' VecType 
+          [0026, 0016] (0011,            catOpBrac) {[}
+              VecType = '[' Exp ']' 
+          [0026, 0018] (0016,                catId) {j}
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0026, 0018] (0012,           catClsBrac) {]}
+              VecType = Epsilon
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+          [0026, 0020] (0024,            catOpeAtr) {=}
+          [0026, 0027] (0016,                catId) {value}
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0026, 0027] (0021,           catSemiCol) {;}
+              VecType = Epsilon
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+0027  "            "
+0028  "        end"
+          [0028, 0011] (0002,               catEnd) {end}
+          SentListAux = Epsilon
+0029  "        "
+0030  "        gap = gap/3;"
+          [0030, 0011] (0016,                catId) {gap}
+          SentListAux = SentList 
+             SentList = Sent SentListAux 
+                 Sent = Atr ';' 
+                  Atr = Id '=' Exp 
+                   Id = 'id' VecType 
+          [0030, 0012] (0024,            catOpeAtr) {=}
+              VecType = Epsilon
+          [0030, 0017] (0016,                catId) {gap}
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0030, 0017] (0046,            catOpeDiv) {/}
+              VecType = Epsilon
+            ArTermRec = MultOpe ArFac ArTermRec 
+              MultOpe = '/' 
+          [0030, 0019] (0039,            catCteInt) {3}
+                ArFac = 'CteInt' 
+          [0030, 0019] (0021,           catSemiCol) {;}
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+0031  "        "
+0032  "    end"
+          [0032, 0007] (0002,               catEnd) {end}
+          SentListAux = Epsilon
+0033  "    "
+0034  "    return nums;"
+          [0034, 0010] (0027,            catReturn) {return}
+          SentListAux = SentList 
+             SentList = Sent SentListAux 
+                 Sent = Return ';' 
+               Return = 'return' ReturnRec 
+          [0034, 0015] (0016,                catId) {nums}
+            ReturnRec = Exp 
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0034, 0015] (0021,           catSemiCol) {;}
+              VecType = Epsilon
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+0035  "end"
+          [0035, 0003] (0002,               catEnd) {end}
+          SentListAux = Epsilon
+0036  ""
+0037  "function int main() do"
+          [0037, 0008] (0000,          catFunction) {function}
+           DefFunList = 'function' FunType FunId OpClPar 'do' SentList 'end' DefFunList 
+          [0037, 0012] (0005,               catInt) {int}
+              FunType = VarType FunTypeAux 
+              VarType = 'int' 
+          [0037, 0017] (0004,              catMain) {main}
+           FunTypeAux = Epsilon
+                FunId = 'main' 
+          [0037, 0017] (0013,             catOpPar) {(}
+              OpClPar = '(' Par ')' 
+          [0037, 0018] (0014,            catClsPar) {)}
+                  Par = Epsilon
+          [0037, 0022] (0001,                catDo) {do}
+0038  "    "
+0039  "    int size;"
+          [0039, 0007] (0005,               catInt) {int}
+             SentList = Sent SentListAux 
+                 Sent = Decl ';' 
+                 Decl = VarType Id 
+              VarType = 'int' 
+          [0039, 0012] (0016,                catId) {size}
+                   Id = 'id' VecType 
+          [0039, 0012] (0021,           catSemiCol) {;}
+              VecType = Epsilon
+0040  "    int i;"
+          [0040, 0007] (0005,               catInt) {int}
+          SentListAux = SentList 
+             SentList = Sent SentListAux 
+                 Sent = Decl ';' 
+                 Decl = VarType Id 
+              VarType = 'int' 
+          [0040, 0009] (0016,                catId) {i}
+                   Id = 'id' VecType 
+          [0040, 0009] (0021,           catSemiCol) {;}
+              VecType = Epsilon
+0041  "    "
+0042  "    print("Insira a quantidade de números");"
+          [0042, 0009] (0025,             catPrint) {print}
+          SentListAux = SentList 
+             SentList = Sent SentListAux 
+                 Sent = Print ';' 
+                Print = 'print' '(' Exp ')' 
+          [0042, 0009] (0013,             catOpPar) {(}
+          [0042, 0010] (0041,            catCteStr) {"Insira a quantidade de números"}
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = 'CteString' 
+          [0042, 0043] (0014,            catClsPar) {)}
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+          [0042, 0044] (0021,           catSemiCol) {;}
+0043  "    read(size);"
+          [0043, 0008] (0026,              catRead) {read}
+          SentListAux = SentList 
+             SentList = Sent SentListAux 
+                 Sent = Read ';' 
+                 Read = 'read' '(' Id Decl 
+          [0043, 0008] (0013,             catOpPar) {(}
+          [0043, 0013] (0016,                catId) {size}
+                   Id = 'id' VecType 
+          [0043, 0013] (0014,            catClsPar) {)}
+              VecType = Epsilon
+          [0043, 0014] (0021,           catSemiCol) {;}
+0044  "    "
+0045  "    int numbers[size];"
+          [0045, 0007] (0005,               catInt) {int}
+          SentListAux = SentList 
+             SentList = Sent SentListAux 
+                 Sent = Decl ';' 
+                 Decl = VarType Id 
+              VarType = 'int' 
+          [0045, 0015] (0016,                catId) {numbers}
+                   Id = 'id' VecType 
+          [0045, 0015] (0011,            catOpBrac) {[}
+              VecType = '[' Exp ']' 
+          [0045, 0020] (0016,                catId) {size}
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0045, 0020] (0012,           catClsBrac) {]}
+              VecType = Epsilon
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+          [0045, 0021] (0021,           catSemiCol) {;}
+0046  "    "
+0047  "    print("Insira os numeros");"
+          [0047, 0009] (0025,             catPrint) {print}
+          SentListAux = SentList 
+             SentList = Sent SentListAux 
+                 Sent = Print ';' 
+                Print = 'print' '(' Exp ')' 
+          [0047, 0009] (0013,             catOpPar) {(}
+          [0047, 0010] (0041,            catCteStr) {"Insira os numeros"}
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = 'CteString' 
+          [0047, 0029] (0014,            catClsPar) {)}
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+          [0047, 0030] (0021,           catSemiCol) {;}
+0048  "    "
+0049  "    from i = 0 to size do"
+          [0049, 0008] (0019,              catFrom) {from}
+          SentListAux = SentList 
+             SentList = Sent SentListAux 
+                 Sent = 'from' Atr 'to' ArExp Doing 'do' SentList 'end' 
+          [0049, 0010] (0016,                catId) {i}
+                  Atr = Id '=' Exp 
+                   Id = 'id' VecType 
+          [0049, 0011] (0024,            catOpeAtr) {=}
+              VecType = Epsilon
+          [0049, 0014] (0039,            catCteInt) {0}
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = 'CteInt' 
+          [0049, 0017] (0020,                catTo) {to}
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+          [0049, 0022] (0016,                catId) {size}
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0049, 0025] (0001,                catDo) {do}
+              VecType = Epsilon
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+                Doing = Epsilon
+0050  "        read(numbers[i]);"
+          [0050, 0012] (0026,              catRead) {read}
+             SentList = Sent SentListAux 
+                 Sent = Read ';' 
+                 Read = 'read' '(' Id Decl 
+          [0050, 0012] (0013,             catOpPar) {(}
+          [0050, 0020] (0016,                catId) {numbers}
+                   Id = 'id' VecType 
+          [0050, 0020] (0011,            catOpBrac) {[}
+              VecType = '[' Exp ']' 
+          [0050, 0022] (0016,                catId) {i}
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0050, 0022] (0012,           catClsBrac) {]}
+              VecType = Epsilon
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+          [0050, 0023] (0014,            catClsPar) {)}
+          [0050, 0024] (0021,           catSemiCol) {;}
+0051  "    end"
+          [0051, 0007] (0002,               catEnd) {end}
+          SentListAux = Epsilon
+0052  "    "
+0053  "    from i = 0 to size do"
+          [0053, 0008] (0019,              catFrom) {from}
+          SentListAux = SentList 
+             SentList = Sent SentListAux 
+                 Sent = 'from' Atr 'to' ArExp Doing 'do' SentList 'end' 
+          [0053, 0010] (0016,                catId) {i}
+                  Atr = Id '=' Exp 
+                   Id = 'id' VecType 
+          [0053, 0011] (0024,            catOpeAtr) {=}
+              VecType = Epsilon
+          [0053, 0014] (0039,            catCteInt) {0}
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = 'CteInt' 
+          [0053, 0017] (0020,                catTo) {to}
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+          [0053, 0022] (0016,                catId) {size}
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0053, 0025] (0001,                catDo) {do}
+              VecType = Epsilon
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+                Doing = Epsilon
+0054  "        print(numbers[i]);"
+          [0054, 0013] (0025,             catPrint) {print}
+             SentList = Sent SentListAux 
+                 Sent = Print ';' 
+                Print = 'print' '(' Exp ')' 
+          [0054, 0013] (0013,             catOpPar) {(}
+          [0054, 0021] (0016,                catId) {numbers}
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0054, 0021] (0011,            catOpBrac) {[}
+              VecType = '[' Exp ']' 
+          [0054, 0023] (0016,                catId) {i}
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0054, 0023] (0012,           catClsBrac) {]}
+              VecType = Epsilon
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+          [0054, 0024] (0014,            catClsPar) {)}
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+          [0054, 0025] (0021,           catSemiCol) {;}
+0055  "    end"
+          [0055, 0007] (0002,               catEnd) {end}
+          SentListAux = Epsilon
+0056  "    "
+0057  "    numbers = _shellSort(numbers, size);"
+          [0057, 0011] (0016,                catId) {numbers}
+          SentListAux = SentList 
+             SentList = Sent SentListAux 
+                 Sent = Atr ';' 
+                  Atr = Id '=' Exp 
+                   Id = 'id' VecType 
+          [0057, 0012] (0024,            catOpeAtr) {=}
+              VecType = Epsilon
+          [0057, 0024] (0003,             catFunId) {_shellSort}
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = FunCall 
+              FunCall = 'funId' OpClPar 
+          [0057, 0024] (0013,             catOpPar) {(}
+              OpClPar = '(' Par ')' 
+          [0057, 0032] (0016,                catId) {numbers}
+                  Par = ParAux 
+               ParAux = Exp Par 
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0057, 0032] (0015,             catComma) {,}
+              VecType = Epsilon
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+                  Par = ',' ParAux 
+          [0057, 0038] (0016,                catId) {size}
+               ParAux = Exp Par 
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0057, 0038] (0014,            catClsPar) {)}
+              VecType = Epsilon
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+                  Par = Epsilon
+          [0057, 0039] (0021,           catSemiCol) {;}
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+0058  "    "
+0059  "    from i = 0 to size do"
+          [0059, 0008] (0019,              catFrom) {from}
+          SentListAux = SentList 
+             SentList = Sent SentListAux 
+                 Sent = 'from' Atr 'to' ArExp Doing 'do' SentList 'end' 
+          [0059, 0010] (0016,                catId) {i}
+                  Atr = Id '=' Exp 
+                   Id = 'id' VecType 
+          [0059, 0011] (0024,            catOpeAtr) {=}
+              VecType = Epsilon
+          [0059, 0014] (0039,            catCteInt) {0}
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = 'CteInt' 
+          [0059, 0017] (0020,                catTo) {to}
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+          [0059, 0022] (0016,                catId) {size}
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0059, 0025] (0001,                catDo) {do}
+              VecType = Epsilon
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+                Doing = Epsilon
+0060  "        print(numbers[i]);"
+          [0060, 0013] (0025,             catPrint) {print}
+             SentList = Sent SentListAux 
+                 Sent = Print ';' 
+                Print = 'print' '(' Exp ')' 
+          [0060, 0013] (0013,             catOpPar) {(}
+          [0060, 0021] (0016,                catId) {numbers}
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0060, 0021] (0011,            catOpBrac) {[}
+              VecType = '[' Exp ']' 
+          [0060, 0023] (0016,                catId) {i}
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = Id 
+                   Id = 'id' VecType 
+          [0060, 0023] (0012,           catClsBrac) {]}
+              VecType = Epsilon
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+          [0060, 0024] (0014,            catClsPar) {)}
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+          [0060, 0025] (0021,           catSemiCol) {;}
+0061  "    end"
+          [0061, 0007] (0002,               catEnd) {end}
+          SentListAux = Epsilon
+0062  ""
+0063  "    return 0;"
+          [0063, 0010] (0027,            catReturn) {return}
+          SentListAux = SentList 
+             SentList = Sent SentListAux 
+                 Sent = Return ';' 
+               Return = 'return' ReturnRec 
+          [0063, 0012] (0039,            catCteInt) {0}
+            ReturnRec = Exp 
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = 'CteInt' 
+          [0063, 0012] (0021,           catSemiCol) {;}
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+0064  "end"
+          [0064, 0003] (0002,               catEnd) {end}
+          SentListAux = Epsilon
+          [0064, 0005] (0048,               catEOF) {EOF}
+           DefFunList = Epsilon
+
+Accepted

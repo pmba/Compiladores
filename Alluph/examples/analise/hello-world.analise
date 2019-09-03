@@ -1,0 +1,74 @@
+0001  "function int _main() do"
+          [0001, 0008] (0000,          catFunction) {function}
+                    S = DefFunList 
+           DefFunList = 'function' FunType FunId OpClPar 'do' SentList 'end' DefFunList 
+          [0001, 0012] (0005,               catInt) {int}
+              FunType = VarType FunTypeAux 
+              VarType = 'int' 
+          [0001, 0018] (0003,             catFunId) {_main}
+           FunTypeAux = Epsilon
+                FunId = 'funId' 
+          [0001, 0018] (0013,             catOpPar) {(}
+              OpClPar = '(' Par ')' 
+          [0001, 0019] (0014,            catClsPar) {)}
+                  Par = Epsilon
+          [0001, 0023] (0001,                catDo) {do}
+0002  "                   "
+0003  "    print("Hello World");"
+          [0003, 0009] (0025,             catPrint) {print}
+             SentList = Sent SentListAux 
+                 Sent = Print ';' 
+                Print = 'print' '(' Exp ')' 
+          [0003, 0009] (0013,             catOpPar) {(}
+          [0003, 0010] (0041,            catCteStr) {"Hello World"}
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = 'CteString' 
+          [0003, 0023] (0014,            catClsPar) {)}
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+          [0003, 0024] (0021,           catSemiCol) {;}
+0004  "    return 0;"
+          [0004, 0010] (0027,            catReturn) {return}
+          SentListAux = SentList 
+             SentList = Sent SentListAux 
+                 Sent = Return ';' 
+               Return = 'return' ReturnRec 
+          [0004, 0012] (0039,            catCteInt) {0}
+            ReturnRec = Exp 
+                  Exp = BoolExp ExpRec 
+              BoolExp = BoolTerm BoolExpRec 
+             BoolTerm = BoolFac BoolTermRec 
+              BoolFac = EqExp 
+                EqExp = RelExp EqExpAux 
+               RelExp = ArExp RelExpRec 
+                ArExp = ArTerm ArExpRec 
+               ArTerm = ArFac ArTermRec 
+                ArFac = 'CteInt' 
+          [0004, 0012] (0021,           catSemiCol) {;}
+            ArTermRec = Epsilon
+             ArExpRec = Epsilon
+            RelExpRec = Epsilon
+             EqExpAux = Epsilon
+          BoolTermRec = Epsilon
+           BoolExpRec = Epsilon
+               ExpRec = Epsilon
+0005  ""
+0006  "end"
+          [0006, 0003] (0002,               catEnd) {end}
+          SentListAux = Epsilon
+          [0006, 0005] (0048,               catEOF) {EOF}
+           DefFunList = Epsilon
+
+Accepted

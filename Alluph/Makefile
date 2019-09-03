@@ -1,5 +1,5 @@
 main: main.o auxiliar.o file.o list.o lexical.o stack.o syntactic.o grammar.o
-	gcc main.o auxiliar.o file.o list.o lexical.o stack.o syntactic.o grammar.o -o main
+	gcc main.o auxiliar.o file.o list.o lexical.o stack.o syntactic.o grammar.o -o alluph
 	rm *.o
 
 main.o: main.c
