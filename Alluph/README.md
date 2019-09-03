@@ -19,5 +19,5 @@ Arquivos .alp (Programas escritos na linuguagem Alluph) se encontram no diretór
 Para executa-lo basta:
 
 ```
-main examples/nome_do_exemplo.alp
+alluph examples/nome_do_exemplo.alp
 ```
